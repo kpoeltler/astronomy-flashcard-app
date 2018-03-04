@@ -1,0 +1,88 @@
+< <!DOCTYPE html>
+    <html>
+
+            <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                  
+                    <title>Picture of The Day Flashcards</title>
+        
+
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="flashcard-style.css" />
+        <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+
+        <script src="https://code.jquery.com/pep/0.4.1/pep.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+        <script src="constants.js" defer></script>
+        <script src="flashcard.js" defer></script>
+        <script src="flashcard-screen.js" defer></script>
+        <script src="menu-screen.js" defer></script>
+        <script src="results-screen.js" defer></script>
+        <script src="app.js" defer></script>
+        <script src="main.js" defer></script>
+
+        
+    </head>
+
+    <body>
+            <pre id="reqObject"></pre>
+
+
+            <img id="apod_img_id" width="250px" />
+    
+            <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="3"></iframe>
+            <p id="copyright"></p>
+    
+            <h3 id="apod_title"></h3>
+            <p id="apod_explaination"></p>
+            <br/>
+            <b>Return Object:</b>
+            <pre id="returnObject"></pre>
+    
+    
+    
+    
+    
+    
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+ 
+    <script>
+            var url = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+
+
+            $.ajax({
+              url: url,
+              success: function(result){
+              if("copyright" in result) {
+                $("#copyright").text("Image Credits: " + result.copyright);
+              }
+              else {
+                $("#copyright").text("Image Credits: " + "Public Domain");
+              }
+              
+              if(result.media_type == "video") {
+                $("#apod_img_id").css("display", "none"); 
+                $("#apod_vid_id").attr("src", result.url);
+              }
+              else {
+                $("#apod_vid_id").css("display", "none"); 
+                $("#apod_img_id").attr("src", result.url);
+              }
+              $("#reqObject").text(url);
+              $("#returnObject").text(JSON.stringify(result, null, 4));  
+              $("#apod_explaination").text(result.explanation);
+              $("#apod_title").text(result.title);
+            }
+            });   
+    
+    </script>
+               
+    </body>
+
+    </html>
