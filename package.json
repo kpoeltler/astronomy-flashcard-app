@@ -1,0 +1,25 @@
+{
+  "name": "astronomy-flashcard-app",
+  "version": "1.0.0",
+  "description": "flashcards",
+  "main": "flashcard-screen-test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpoeltler/astronomy-flashcard-app.git"
+  },
+  "keywords": [
+    "astronomy",
+    "javascript",
+    "nasa"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kpoeltler/astronomy-flashcard-app/issues"
+  },
+  "homepage": "https://github.com/kpoeltler/astronomy-flashcard-app#readme"
+}
