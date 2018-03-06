@@ -45,13 +45,21 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
-// Configure MySQL connection
+// Configure MySQL connectionA
 var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'node',
 	password: 'node',
 	database: 'node_project'
   })
+
+// Configure MySQL connectionB
+db.Sequalize.sync().then (function() {
+  app.listen (PORT, function () {
+    console.log ("App listening on PORT " +PORT);
+  });
+});
+
 
 //Establish MySQL connection
 connection.connect(function(err) {
