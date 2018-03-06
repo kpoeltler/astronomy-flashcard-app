@@ -1,0 +1,215 @@
+/**
+ * This style is provided by the course staff. Please do not modify this file!
+ * If you need to add additional CSS styling, please change
+ * `flashcard-style.css` instead.
+ */
+body {
+  background-color: #171719;
+  color: #1e1f1c;
+  font-family: 'Open Sans', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  margin-left: 65px;
+}
+
+#choices div {
+  display: flex;
+  align-items: center;
+}
+
+#choices div, .menu-buttons button {
+  background-color: #fafafa;
+  border: none;
+  border-bottom: 2px solid #d2d2d2;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  height: 2.5em;
+  margin: 0.5em 0;
+  padding-left: 0.75em;
+  width: 100%;
+}
+
+.menu-buttons button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.flashcard {
+  background: #66ccff;
+  border-radius: 10px;
+  box-shadow: 0 8px #00aaff;
+  box-sizing: border-box;
+  font-size: 2.5em;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 8px;
+  padding: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.flashcard-box {
+  padding: 25px;
+  position: relative;
+  height: 800px;
+  width: 500px;
+  box-sizing: border-box;
+  touch-action: none;
+  overflow: hidden;
+}
+
+.flashcard.definition {
+  background: white;
+  box-shadow: 0 8px #ffcc66;
+  color: black;
+  z-index: 2;
+}
+
+.flashcard-box.show-word .definition {
+  display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Londrina Solid', cursive;
+  /* font-family: 'Nunito', sans-serif; */
+  margin: 0;
+  text-align: center;
+}
+
+.inactive {
+  display: none !important;
+}
+
+#main {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+#main .status {
+  background-color: #b6d9d9;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: #607d8b;
+  margin-top: 1em;
+  padding: 0.5em;
+  width: 275px;
+}
+
+#menu {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+#menu .contents, #results {
+  background-color: #dadde5;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 600px;
+  width: 95vw;
+}
+
+#menu .contents header {
+  margin: 1em 0;
+}
+
+#menu .contents header h1 {
+  font-size: 2.5em;
+}
+
+#menu .contents header h2 {
+  font-weight: normal;
+}
+
+#results {
+  font-size: 1.25em;
+  max-width: 400px;
+  padding: 0.5em;
+  text-align: center;
+}
+
+#results .percent {
+  font-weight: bold;
+  font-size: 3em;
+}
+
+/* Drop down button feature */
+
+.dropbtn {
+  background: url("https://lh3.googleusercontent.com/ikKeG9HuyjSOdZON5LstPs3lH--m3VK3kknOIK3xpCA7miSRaATqjD3o7bypnTb9KCjO6ogWvdQ=w640-h400-e365") no-repeat scroll 0 0 transparent;
+  ;
+  color: white;
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  margin-left: 200px;
+  width:200%;
+  
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
