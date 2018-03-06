@@ -1,27 +1,36 @@
 
 
-let apiTest ( 'should check my api', function() ) {
-
-Make a "GET" request to the API to pull raw data into your environment
-"Parse" that data from its raw form through JavaScript Object Notification (JSON) into a usable format
-Write a loop to "page" through that data and retrieve the full data set
-}
-
-
-
-
-
-
-
+//describe
+//what are you testing on a high skill level annoy fxn
+// describe( 'should check my api', function()  {
+//it
+//more description and annoy fxn
+// Make a "GET" request to the API to pull raw data into your environment
+// "Parse" that data from its raw form through JavaScript Object Notification (JSON) into a usable format
+// Write a loop to "page" through that data and retrieve the full data set
+// }
+//expect will test the output
+//what will this do output
 
 
+//test for the iffy library
+
+//which sql connection code do we keep what is the difference for both of them
+//expect(give it a let name) take ajax function and give it a let name
+
+describe("check my ajax fxn", function() {
+    it("GET request", function(){
+        expect(success()).to.have.text("value") //value placeholder
+    });
+})
+
+
+// $("#copyright").text("Image Credits: " + result.copyright);
 
 
 
 
-
-
-
+    
 
 
 
