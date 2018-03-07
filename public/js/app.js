@@ -5,20 +5,6 @@ $(document).ready(function () {
 // - Adding methods
 // - Adding additional fields
 
-// class App {
-//   constructor() {
-//     const menuElement = document.querySelector('#menu');
-//     this.menu = new MenuScreen(menuElement);
-
-//     const mainElement = document.querySelector('#main');
-//     this.flashcards = new FlashcardScreen(mainElement);
-
-//     const resultElement = document.querySelector('#results');
-//     this.results = new ResultsScreen(resultElement);
-
-    
-//   }
-// }
 
 //iffy library
 // const animation = function () {
@@ -42,6 +28,9 @@ $(document).ready(function () {
 
 var url = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
 
+/* @param [{string}] arr1 
+  @param {Object} || Array[{Object}] data 
+*/
     $.ajax({
       url: url,
       method: "GET",
@@ -69,10 +58,97 @@ var url = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUi
       console.log("response", JSON.stringify(result, null, 4));
     }
     
-
     });
  
  
+// Get ...
+// .done (function (data) {
+
+// });
+
+function updateCardArr (arr1, data) {
+  let newArr = [];
+  arr1.forEach(e => newArr.push (e));
+  if (!data.isArray) {
+      newArr.push(data);
+  }else {
+    data.forEach(e => newArr.push (e));
+}
+
+let state = {
+  cardArr:[{}],
+  current: 0
+}
+
+// index.html animation
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#home']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+
+
+// Add smooth scrolling to all links in navbar + footer link
+$(".navbar a, footer a[href='#home']").on('click', function(event) {
+
+  // Make sure this.hash has a value before overriding default behavior
+  if (this.hash !== "") {
+
+    // Prevent default anchor click behavior
+    event.preventDefault();
+
+    // Store hash
+    var hash = this.hash;
+
+    // Using jQuery's animate() method to add smooth page scroll
+    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 900, function(){
+
+      // Add hash (#) to URL when done scrolling (default click behavior)
+      window.location.hash = hash;
+      });
+    } // End if 
+  });
+}
+
+
+
+
+
+
+
+
+})
+
+
+
+
+
 
 
 
@@ -91,4 +167,3 @@ var url = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUi
   //     this.containerElement.classList.add('inactive');
   //   }
   // }
-  });

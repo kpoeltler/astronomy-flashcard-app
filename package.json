@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/kpoeltler/astronomy-flashcard-app/issues"
   },
-  "homepage": "https://github.com/kpoeltler/astronomy-flashcard-app#readme"
+  "homepage": "https://github.com/kpoeltler/astronomy-flashcard-app#readme",
+  "dependencies": {
+    "chai-param": "^0.1.2",
+    "chai-shallow-deep-equal": "^1.4.6"
+  }
 }
