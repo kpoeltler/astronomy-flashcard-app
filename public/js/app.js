@@ -57,14 +57,39 @@ var url = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUi
       $("#apod_title").text(result.title);
       console.log("response", JSON.stringify(result, null, 4));
     }
-    
-    });
- 
- 
-// Get ...
-// .done (function (data) {
+  })
 
-// });
+    // success: function (results) {
+    //   if (results != "undefined") {
+    //     // $("#cameraImages").toggle(".photoInfo");
+    
+    //     for (var i = 0; i < 4; i++) {
+    //       flickrPic.push(results.photos.photo[i].url_m);
+    //     }
+    
+    //   } else {
+    //     $("#errorMessage").toggle(".errorInfo");
+    //   };
+    
+    // },
+    
+    // error: function (error) {
+    //   console.log("error" + error);
+    //   $("#errorMessage").toggle(".errorInfo");
+    // }
+    
+    // }).then(function (results) {
+    
+    // });
+    
+    // error: function (error) {
+    // console.log("error" + error);
+    // }
+    
+    // });
+ 
+ 
+
 
 function updateCardArr (arr1, data) {
   let newArr = [];
@@ -74,85 +99,27 @@ function updateCardArr (arr1, data) {
   }else {
     data.forEach(e => newArr.push (e));
 }
+}
 
 let state = {
   cardArr:[{}],
   current: 0
 }
 
-// index.html animation
-$(document).ready(function(){
-  // Initialize Tooltip
-  $('[data-toggle="tooltip"]').tooltip(); 
+
+
+
+
+
+
+
+
+
+
   
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#home']").on('click', function(event) {
-
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-})
 
 
-// Add smooth scrolling to all links in navbar + footer link
-$(".navbar a, footer a[href='#home']").on('click', function(event) {
-
-  // Make sure this.hash has a value before overriding default behavior
-  if (this.hash !== "") {
-
-    // Prevent default anchor click behavior
-    event.preventDefault();
-
-    // Store hash
-    var hash = this.hash;
-
-    // Using jQuery's animate() method to add smooth page scroll
-    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-    $('html, body').animate({
-      scrollTop: $(hash).offset().top
-    }, 900, function(){
-
-      // Add hash (#) to URL when done scrolling (default click behavior)
-      window.location.hash = hash;
-      });
-    } // End if 
-  });
-}
-
-
-
-
-
-
-
-
-})
-
-
-
-
-
-
-
-
-// class FlashcardScreen {
+//class FlashcardScreen {
   //   constructor(containerElement) {
   //     this.containerElement = containerElement;
   //   }
@@ -166,4 +133,4 @@ $(".navbar a, footer a[href='#home']").on('click', function(event) {
   //   hide() {
   //     this.containerElement.classList.add('inactive');
   //   }
-  // }
+})
