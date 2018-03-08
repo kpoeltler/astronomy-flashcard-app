@@ -2,10 +2,10 @@
     "development": {
       "username": "root",
       "password": "root",
-      "database": "astronomy_picture_of_the_day",
+      "database": "astronomy",
       "host": "127.0.0.1",
       "dialect": "mysql",
-      "port": 3306
+      "port": 	8889
     },
     "test": {
       "username": "root",
@@ -13,7 +13,7 @@
       "database": "database_test",
       "host": "127.0.0.1",
       "dialect": "mysql",
-      "port": 3306
+      "port": 	8889
     },
     "production": {
       "username": "root",
@@ -21,7 +21,7 @@
       "database": "database_production",
       "host": "127.0.0.1",
       "dialect": "mysql",
-      "port": 3306
+      "port": 	8889
     }
   }
   
