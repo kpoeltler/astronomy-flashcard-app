@@ -8,9 +8,9 @@ var sequelize = require("../config/config.json");
 // Define the Astronomy (Card object) for the card table and columns
 var Cards = sequelize.define("cards", {
 // db will auto Create ID
-// CardID: {
-// type: Sequelize.INTEGER
-// },
+CardID: {
+type: Sequelize.INTEGER
+},
         copyright : {
             type : Sequelize.STRING
         },

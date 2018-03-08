@@ -1,5 +1,9 @@
 $(document).ready(function() {
-  
+  let state = {
+    cardArr:[{}],
+    current: 0
+  };
+
   var url =
     "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
 
@@ -31,13 +35,10 @@ $(document).ready(function() {
 //=====================TUES==================================
   // Issue 37 hdurl property of the cardArr[currentCard] is rendered to the page as an image
   $.get( "api/all", function( data ) {
-    $( ".result" ).html( data );
+    console.log( data );
   });
 
-  let state = {
-      cardArr:[{}],
-      current: 0
-    };
+  
   
   //button shows and hides description of picture
   
@@ -61,6 +62,8 @@ const updateCardArr= (arr1, data) => {
   } else {
     data.forEach(e => newArr.push({ ...e }));
   };
+  return newArr;
+}
 
 //***resetArr*** 
 const resetArr =() => [];
@@ -81,11 +84,22 @@ const resetCount = () => 0;
 
 //**Thursday** 
  
-  
 
 
 
+//**render function that appends pictures */
+const dbPicture = (e) => {
+  e.preventDefault ();
+  let picture = $('whatever sue has ')
+  db.ref().push ({ 
+    msg:input });
+  }
 
+  $('editButton'). on('click', updateUserInput);
+
+  db.reg().on('child_added', function (data) {
+    $('#card).append('<img> + data.val().msg + '</img>');
+  });
 
 
 
