@@ -1,7 +1,7 @@
 let express = require("express");
 let bodyParser = require("body-parser");
 let path = require("path");
-let Sequelize = require('sequelize');
+let sequelize = require('sequelize');
 
 
 let app = express();

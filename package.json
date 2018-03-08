@@ -25,6 +25,8 @@
   "dependencies": {
     "chai-param": "^0.1.2",
     "chai-shallow-deep-equal": "^1.4.6",
-    "jasmine": "^3.1.0"
+    "jasmine": "^3.1.0",
+    "mysql2": "^1.5.2",
+    "sequelize": "^4.35.2"
   }
 }
