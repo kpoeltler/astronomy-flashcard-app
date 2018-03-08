@@ -37,8 +37,11 @@ $(document).ready(function() {
   const render=() => {
     let apodPicture= $("<img>");
     apodPicture.attr('src',state.cardArr[state.current].hdurl).appendTo("#card");
-  let apodExplanation =$("<p>");
-  apodExplanation.text(state.cardArr[state.current].explanation).appendTo("#card");
+    $( '#card' ).click(function() {
+    
+    let apodExplanation =$("<p>");
+    apodExplanation.text(state.cardArr[state.current].explanation).appendTo("#card");
+  });
   }
 
   $.get( "api/all", function( data ) {
@@ -72,6 +75,7 @@ const updateCardArr= (arr1, data) => {
     data.forEach(e => newArr.push({ ...e }));
   };
   return newArr;
+  
 }
 
 //***resetArr*** 
