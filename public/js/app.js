@@ -1,6 +1,6 @@
 $(document).ready(function() {
   let state = {
-    cardArr:[{}],
+    cardArr:[],
     current: 0
   };
 
@@ -34,8 +34,17 @@ $(document).ready(function() {
   // });
 //=====================TUES==================================
   // Issue 37 hdurl property of the cardArr[currentCard] is rendered to the page as an image
+  const render=() => {
+    let apodPicture= $("<img>");
+    apodPicture.attr('src',state.cardArr[state.current].hdurl).appendTo("#card");
+  let apodExplanation =$("<p>");
+  apodExplanation.text(state.cardArr[state.current].explanation).appendTo("#card");
+  }
+
   $.get( "api/all", function( data ) {
-    console.log( data );
+    state.cardArr = updateCardArr(state.cardArr, data);
+    console.log(state.cardArr)
+    render (); 
   });
 
   
@@ -83,44 +92,28 @@ const resetCount = () => 0;
 
 
 //**Thursday** 
- 
-
-
-
-//**render function that appends pictures */
-// const dbPicture = (e) => {
-//   e.preventDefault ();
-//   let picture = $('whatever sue has ')
-//   db.ref().push ({ 
-//     msg:input });
-//   }
-
-//   $('editButton'). on('click', updateUserInput);
-
-//   db.reg().on('child_added', function (data) {
-//     $('#card).append('<img> + data.val().msg + '</img>');
-//   });
 
 
 
 
 
-
-
+//**Stanford flashcard **/
   //class FlashcardScreen {
   //   constructor(containerElement) {
   //     this.containerElement = containerElement;
   //   }
-
   //   show() {
   //     this.containerElement.classList.remove('inactive');
   //     const flashcardContainer = document.querySelector('#flashcard-container');
   //     const card = new Flashcard(flashcardContainer, 'word', 'definition');
   //   }
-
   //   hide() {
   //     this.containerElement.classList.add('inactive');
   //   }
+
+
+
+
 });
 
 
