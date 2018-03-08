@@ -3,6 +3,7 @@
  * If you need to add additional CSS styling, please change
  * `flashcard-style.css` instead.
  */
+
 body {
   background-color: #171719;
   color: #1e1f1c;
@@ -123,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 275px;
 }
 
-#menu {
+#card {
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -131,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100vw;
 }
 
-#menu .contents, #results {
+#card .contents, #results {
   background-color: #dadde5;
   border-radius: 10px;
   box-sizing: border-box;
@@ -140,76 +141,178 @@ h1, h2, h3, h4, h5, h6 {
   width: 95vw;
 }
 
-#menu .contents header {
+#card .contents header {
   margin: 1em 0;
 }
 
-#menu .contents header h1 {
+#card .contents header h1 {
   font-size: 2.5em;
 }
 
-#menu .contents header h2 {
+#card .contents header h2 {
   font-weight: normal;
 }
 
-#results {
-  font-size: 1.25em;
-  max-width: 400px;
-  padding: 0.5em;
-  text-align: center;
+/* Add a dark background color with a little bit see-through */ 
+.navbar {
+  margin-bottom: 0;
+  background-color: #2d2d30;
+  border: 0;
+  font-size: 11px !important;
+  letter-spacing: 4px;
+  opacity:0.9;
 }
 
-#results .percent {
-  font-weight: bold;
-  font-size: 3em;
+/* Add a gray color to all navbar links */
+.navbar li a, .navbar .navbar-brand { 
+  color: #d5d5d5 !important;
 }
 
-/* Drop down button feature */
-
-.dropbtn {
-  background: url("https://lh3.googleusercontent.com/ikKeG9HuyjSOdZON5LstPs3lH--m3VK3kknOIK3xpCA7miSRaATqjD3o7bypnTb9KCjO6ogWvdQ=w640-h400-e365") no-repeat scroll 0 0 transparent;
-  ;
-  color: white;
-  margin: 5px;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
+  color: #fff !important;
 }
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+/* The active link */
+.navbar-nav li.active a {
+  color: #fff !important;
+  background-color:#29292c !important;
 }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  margin-left: 200px;
-  width:200%;
-  
-  display: inline-block;
+/* Remove border color from the collapsible button */
+.navbar-default .navbar-toggle {
+  border-color: transparent;
 }
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+/* Dropdown */
+.open .dropdown-toggle {
+  color: #fff ;
+  background-color: #555 !important;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
+/* Dropdown links */
+.dropdown-menu li a {
+  color: #000 !important;
+}
+
+/* On hover, the dropdown links will turn red */
+.dropdown-menu li a:hover {
+  background-color: red !important;
+}
+
+/* carosel feature */
+.container {
+  padding: 80px 120px;
+}
+.person {
+  border: 10px solid transparent;
+  margin-bottom: 25px;
+  width: 80%;
+  height: 80%;
+  opacity: 0.7;
+}
+.person:hover {
+  border-color: #f1f1f1;
+}
+
+.carousel-inner img {
+  -webkit-filter: grayscale(90%);
+  filter: grayscale(90%); /* make all photos black and white */ 
+  width: 100%; /* Set width to 100% */
+  margin: auto;
+}
+
+.carousel-caption h3 {
+  color: #fff !important;
+}
+
+@media (max-width: 600px) {
+  .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+  }
+}
+
+footer {
+  background-color: #2d2d30;
+  color: #f5f5f5;
+  padding: 32px;
+}
+footer a {
+  color: #f5f5f5;
+}
+footer a:hover {
+  color: #777;
   text-decoration: none;
-  display: block;
-}
+}  
+
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+
+
+/* flashcard animation */
+
+/* * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+} */
+
+
+
+
+/* article.flashcard {
+  margin: 0px auto;
+  border: 1px rgba(255, 255, 255, 0.03) solid;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  max-height: 400px;
+
+  input[type=checkbox] {    
+    display: none;
+  }
+
+  input[type=checkbox]:checked ~ label{
+    section.front {
+      height: 0%;
+    }
+    
+    section.back {
+      height: 100%;
+    }
+  }
+
+  label {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  section {
+    display: block;
+    font: 30px 'Oswald', sans-serif;
+    text-align: center;
+    line-height: 400px;
+    width: 100%;
+    transition: all 0.2s linear 0s;
+    overflow: hidden;
+    
+    &.front {
+      color: #BA1F53;
+      background: #DDD;
+      height: 100%;
+    }
+    
+    &.back {
+      color: #DDD;
+      background: #C85073;
+      height: 0%;
+    }
+  }
+} */

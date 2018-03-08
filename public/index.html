@@ -24,7 +24,6 @@
     <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="flashcard-style.css" />
   <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
 
@@ -32,7 +31,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
   <script="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
 
-  
     <script src="js/menu-screen.js" defer></script>
     <script src="js/app.js" defer></script>
     <script src="js/main.js" defer></script>
@@ -40,25 +38,142 @@
 
 </head>
 
-<body>
+<body id="menu" data-spy="scroll" data-target=".navbar" data-offset="57">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="#home">Logo</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#home">HOME</a></li>
+                  <li><a href="#cardDeck1">PLANETS</a></li>
+                  <li><a href="#cardDeck2">DEEP SPACE</a></li>
+                  <li><a href="#cardDeck3">EXPLOSIVE</a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
 
-  <div id="menu">
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+            
+              <!-- Wrapper for slides -->
+              <div class="container">
+              <div class="carousel-inner" role="listbox">
+                  
+                <div class="item active">
+                    <img id="apod_img_id" width="1200" height="700" />
+                    <iframe id="apod_vid_id" type="text/html" width="840" height="585" frameborder="3"></iframe>
+                </div>
+                <div class="carousel-caption">   
+                <h3 id="apod_title"></h3>
+              <h4 id="copyright"></h4>
+              <p id = "apod_explaination"></p>
+            </div> 
+          
+            <button id="hide">Hide Description</button>
+              <button id="show">Show Description</button>
+             </div>
+            
+      
+<div class="container">
+                <div class="item">
+                    <img id="apod_img_id" width="1200" height="700" />
+                    <iframe id="apod_vid_id" type="text/html" width="840" height="585" frameborder="3"></iframe>
+                  <div id="apod_explaination" class="carousel-caption">
+                      <h3 id="apod_title"></h3>
+                    <p id="copyright"></p>
+                    <p id = "apod_explaination"></p>
+                  </div> 
+                </div>
+              </div>
+
+
+              <div class="container">
+                <div class="item">
+                    <img id="apod_img_id" width="1200" height="700" />
+                    <iframe id="apod_vid_id" type="text/html" width="840" height="585" frameborder="3"></iframe>
+                 
+                  <div class="carousel-caption">
+                      <h3 id="apod_title"></h3>
+                    <p id="copyright"></p>
+                    <p id = "apod_explaination"></p>
+                  </div> 
+                </div>
+              </div>
+            
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            
+        
+          
+          
+       
+  
+      <div id="card">
     <div class="contents">
-      <header>
+      
+ 
+
+
+<!-- flashcard box 
+<div class= "container">
+  <div class="flashcard-box" touch-action="none">
+    <div>
         <h1> ASTRONOMY PICTURE OF THE DAY </h1>
-        <img class='logo' src="telescope.png" width='76%' height='76%' alt="">
+        <form action=""> 
+            <select name="customers" onchange="showUser(this.value)">
+            <option value="">Select a Subject:</option>
+            <option value="Planets">Planets</option>
+            <option value="Galaxies">Galaxies</option>
+            <option value="Explosions">Explosions</option>
+            </select>
+            </form>
+            <hr>
+    <pre id="reqObject"></pre>
+      <img id="apod_img_id" width="450px" />
+    </div>
+      <iframe id="apod_vid_id" type="text/html" width="840" height="585" frameborder="3"></iframe>
+      
+      
+      the back of the card 
+      <p id="copyright"></p>
+      <h3 id="apod_title"></h3>
+      <p id="apod_explaination"></p>
+    </div> 
+     <b>Return Object:</b>
+    <pre id="returnObject"></pre>
+  </div>
+</div>   
+  dropdown menu 
+    <img class='logo' src="telescope.png" width='76%' height='76%' alt="">
         <div class="dropdown">
           <button onclick="myFunction()" class="dropbtn">Choose a subject </button>
           <div id="menuDropdown" class="dropdown-content">
             <a href="#">Planets</a>
             <a href="#">Galaxies</a>
-            <a href="#">Stars</a>
+            <a href="#">Stars</a> 
             
-          </div>
-        </div>
-      </header>
-
-  <!-- <div id="main" class="inactive">
+ <div id="card" class="inactive">
     <div id="flashcard-container" touch-action="none"></div>
     <pre id="reqObject"></pre>
     <img id="apod_img_id" width="250px" />
@@ -68,33 +183,18 @@
     <p id="apod_explaination"></p>
     <br/>
     <b>Return Object:</b>
-    <pre id="returnObject"></pre> -->
+    <pre id="returnObject"></pre>  -->
 
 
-  <!-- flashcard box -->
-  <div class= "container">
-  <div class="flashcard-box" touch-action="none">
-    <div>
-      <!-- <pre id="reqObject"></pre> -->
-      <img id="apod_img_id" width="450px" />
-    </div>
-      <iframe id="apod_vid_id" type="text/html" width="840" height="585" frameborder="3"></iframe>
-      
-      
-      <!-- the back of the card -->
-      <!-- <p id="copyright"></p>
-      <h3 id="apod_title"></h3>
-      <p id="apod_explaination"></p>
-    </div> 
-     <b>Return Object:</b>
-    <pre id="returnObject"></pre> -->
-
-    
-    
-
-
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a></p> 
+  </footer>
+  
  
-    <script="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
+  <script="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script> 
     
   
   </body>
@@ -106,5 +206,4 @@
 
 
 
-<!-- My APOD API key 
-VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n  -->
+ 
