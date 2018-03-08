@@ -1,35 +1,9 @@
 $(document).ready(function() {
-  // You may need to do things such as:
-  // - Changing the constructor parameters
-  // - Changing the code in the constructor
-  // - Adding methods
-  // - Adding additional fields
-
-  //iffy library
-  // const animation = function () {
-  //   const toggle
-  // }
-
-  // class MenuScreen {
-  // constructor(containerElement) {
-  //   this.containerElement = containerElement;
-  // }
-
-  // show() {
-  //   this.containerElement.classList.remove('inactive');
-  // }
-
-  // hide() {
-  //   this.containerElement.classList.add('inactive');
-  // }
-  // }
-
+  
   var url =
     "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
 
-  /* @param [{string}] arr1 
-  @param {Object} || Array[{Object}] data 
-*/
+
   $.ajax({
     url: url,
     method: "GET",
@@ -54,47 +28,70 @@ $(document).ready(function() {
       console.log("response", JSON.stringify(result, null, 4));
     }
   });
-
+//=====================TUES==================================
   // Issue 37 hdurl property of the cardArr[currentCard] is rendered to the page as an image
-  // $.get( "ajax/index.html", function( data ) {
-  //   $( ".result" ).html( data );
-  //   alert( "Load was performed." );
-  // });
+  $.get( "api/all", function( data ) {
+    $( ".result" ).html( data );
+  });
 
-  //shows and hides description of picture
-  $(document).ready(function(){
+  let state = {
+      cardArr:[{}],
+      current: 0
+    };
+  
+  //button shows and hides description of picture
+  
   $("#hide").click(function() {
     $("p").hide();
   });
   $("#show").click(function() {
     $("p").show();
   });
-})
 
-  // $("#flip").click(function(){
-  //     $("#panel").slideDown("slow");
-  // });
 
-  //   $(document).ready(function(){
-  //     $("#apod_img_id").click(function(){
-  //         $("#apod_explaination").slideDown("slow");
-  //     });
-  // });
 
-  // function updateCardArr (arr1, data) {
-  //   let newArr = [];
-  //   arr1.forEach(e => newArr.push (e));
-  //   if (!data.isArray) {
-  //       newArr.push(data);
-  //   }else {
-  //     data.forEach(e => newArr.push (e));
-  // }
-  // }
+//=====================WEDNESDAY=====================================
 
-  // let state = {
-  //   cardArr:[{}],
-  //   current: 0
-  // }
+//**upDateArr***
+const updateCardArr= (arr1, data) => {
+  let newArr = [];
+  arr1.forEach(e => newArr.push({ ...e }));
+  if (!data.isArray) {
+    newArr.push(data);
+  } else {
+    data.forEach(e => newArr.push({ ...e }));
+  };
+
+//***resetArr*** 
+const resetArr =() => [];
+
+//***removeSubject** 
+const removeSubject = (arr, subject) => arr.filter(e =>e.subject !== subject);
+
+//***decrement** 
+const increment = num => num - 1;
+
+//**increment** 
+const increment = num => + 1;
+
+//**resetCount**
+const resetCount = () => 0;
+
+
+
+//**Thursday** 
+ 
+  
+
+
+
+
+
+
+
+
+
+
 
   //class FlashcardScreen {
   //   constructor(containerElement) {
@@ -111,3 +108,20 @@ $(document).ready(function() {
   //     this.containerElement.classList.add('inactive');
   //   }
 });
+
+
+
+//*****User's added description input **** */
+const updateUserInput = (e) => {
+  e.preventDefault ();
+  let input = $('message').val().trim();
+  db.ref().push ({ 
+    msg:input });
+  }
+
+  $('editButton'). on('click', updateUserInput);
+
+  db.reg().on('child_added', function (data) {
+    $('#userEdit).append('<p> + data.val().msg + '</p>');
+  });
+  
