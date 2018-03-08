@@ -29,6 +29,39 @@ module.exports = function(app) {
     });
 
 
+
+    // PUT route that accesses the req.body 
+    // and updates the userDesc in the db where the id matches.
+    // has no dependencies
+    app.put("/api/description", function(req, res) {
+
+            console.dir(req.body);
+            
+        db.Cards.update(
+            req.body,
+            {
+            where: {
+                id: req.body.id
+            }
+            }).then(function(dbCards) {
+                res.json(dbCards);
+            })
+            .catch(function(err) {
+                // "catch" an error to prevent it from being "thrown", 
+                // which could crash our node app
+                res.json(err);
+            }); 
+
+            // res.send("test");
+
+    }); 
+
+
+
+
+
+// new entry is returned to the front-end
+
 /* MORE HERE */
 
 

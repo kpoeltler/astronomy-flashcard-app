@@ -7,14 +7,18 @@ var sequelize = require("../config/config.json");
 
 // Define the Astronomy (Card object) for the card table and columns
 var Cards = sequelize.define("cards", {
+// db will auto Create ID
+// CardID: {
+// type: Sequelize.INTEGER
+// },
         copyright : {
-        type : Sequelize.STRING
+            type : Sequelize.STRING
         },
         date: {
-        type: Sequelize.STRING
+            type: Sequelize.STRING
         },
         explanation: {
-        type: Sequelize.STRING
+            type: Sequelize.STRING
         },
         hdurl: {
             type: Sequelize.STRING
@@ -45,5 +49,6 @@ var Cards = sequelize.define("cards", {
 // Syncs with DB
 Cards.sync();
 
+// Makes the Cards Model available for other files (and will also create a table)
 module.exports = Cards;
   
