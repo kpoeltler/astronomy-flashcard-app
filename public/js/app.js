@@ -3,11 +3,7 @@ $(document).ready(function() {
     cardArr: [],
     current: 0
   };
-
-  /**
-   * renders a picture and paragraph onto index.html
-   * @return - appends a picture and paragraph to index.html
-   */
+  
   const render = () => {
     let apodPicture = $("<img>");
     apodPicture.attr("id","db-picture");
