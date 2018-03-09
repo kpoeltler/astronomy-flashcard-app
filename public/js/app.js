@@ -3,75 +3,46 @@ $(document).ready(function() {
     cardArr: [],
     current: 0
   };
-
-  // var url =
-  //   "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
-
-  // $.ajax({
-  //   url: url,
-  //   method: "GET",
-  //   success: function(result) {
-  //     if ("copyright" in result) {
-  //       $("#copyright").text("Image Credits: " + result.copyright);
-  //     } else {
-  //       $("#copyright").text("Image Credits: " + "Public Domain");
-  //     }
-
-  //     if (result.media_type == "video") {
-  //       $("#apod_img_id").css("display", "none");
-  //       $("#apod_vid_id").attr("src", result.url);
-  //     } else {
-  //       $("#apod_vid_id").css("display", "none");
-  //       $("#apod_img_id").attr("src", result.url);
-  //     }
-  //     $("#reqObject").text(url);
-  //     $("#returnObject").text(JSON.stringify(result, null, 4));
-  //     $("#apod_explaination").text(result.explanation);
-  //     $("#apod_title").text(result.title);
-  //     console.log("response", JSON.stringify(result, null, 4));
-  //   }
-  // });
-  //=====================TUES==================================
-  // Issue 37 hdurl property of the cardArr[currentCard] is rendered to the page as an image
-
+  
   const render = () => {
     let apodPicture = $("<img>");
-    $("#card").html(apodPicture.attr("src", state.cardArr[state.current].hdurl));
+    apodPicture.attr("id","db-picture");
+    $("#card").html(
+      apodPicture.attr("src", state.cardArr[state.current].hdurl)
+    );
   };
 
   $("#card").click(function() {
-    console.log("is there a paragraph on the page?",);
-    //use jquery. get the card div from the page. see if it has a <p> tag in it
-    if ( $("#card").children().is('p')){
+    if (
+      $("#card")
+        .children()
+        .is("p")
+    ) {
       let apodPicture = $("<img>");
-      $("#card").html(apodPicture.attr("src", state.cardArr[state.current].hdurl));
-    }else{
+      apodPicture.attr("src", state.cardArr[state.current].hdurl);
+      apodPicture.attr("id","db-picture");
+      console.log("pic", apodPicture);
+      $("#card").html(apodPicture);
+    } else {
       let apodExplanation = $("<p>");
-      $("#card").html(apodExplanation.text(state.cardArr[state.current].explanation));
+      $("#card").html(
+        apodExplanation.text(state.cardArr[state.current].explanation)
+      );
     }
-    
   });
-
-
-
+  //=====================================================================
   $.get("api/all", function(data) {
     state.cardArr = updateCardArr(state.cardArr, data);
     console.log(state.cardArr);
     render();
   });
 
-  //button shows and hides description of picture
-
-  // $("#hide").click(function() {
-  //   $("p").hide();
-  // });
-  // $("#show").click(function() {
-  //   $("p").show();
-  // });
-
-  //=====================WEDNESDAY=====================================
-
-  //**upDateArr***
+  /**
+   * Updates the flashcard array
+   * @param {Array} arr1 - This is an array object
+   * @param {String} data - This is data from the db
+   * @return {[{}]}  - a new array that has all the pushed objects
+   */
   const updateCardArr = (arr1, data) => {
     let newArr = [];
     arr1.forEach(e => newArr.push({ ...e }));
@@ -83,36 +54,50 @@ $(document).ready(function() {
     return newArr;
   };
 
-  //***resetArr***
+  /**
+   * resets to an empty array
+   * @return {num}  - the num param incremented by one
+   */
   const resetArr = () => [];
 
-  //***removeSubject**
+  /**
+   * Removes an element from an object inside an array
+   * @param {Array} arr - This array
+   * @param {string} subject - This any number to be incremented
+   * @return {num}  - the num param incremented by one
+   */
   const removeSubject = (arr, subject) =>
     arr.filter(e => e.subject !== subject);
 
-  //***decrement**
-  const decrement = num => num - 1;
+  /**
+   * A simple decrementer
+   * @param {num} num - This any number to be decremented
+   * @return {num}  - the num param decremented by one
+   */
+  const decrement = num => num - 1; //**increment**
 
-  //**increment**
+  /**
+   * A simple incrementer
+   * @param {num} num - This any number to be incremented
+   * @return {num}  - the num param incremented by one
+   */ 
   const increment = num => +1;
 
-  //**resetCount**
+  /**
+   * Resets the counter
+   * @return - zero
+   */
   const resetCount = () => 0;
 
+  $("#nextbtn").on("click", function() {
+    state.current = increment(state.current);
+    render();
+  });
 
-//**Friday *
-
-$('#nextbtn').on('click', function () {
-  state.current = increment (state.current);
-  render();
-});
-
-$('#backbtn').on('clcik',function () {
-  state.current = decrement (state.current);
-  render();
-})
-
-  //**Thursday**
+  $("#backbtn").on("clcik", function() {
+    state.current = decrement(state.current);
+    render();
+  });
 
   //**Stanford flashcard **/
   //class FlashcardScreen {
@@ -142,3 +127,40 @@ $('#backbtn').on('clcik',function () {
 //   db.reg().on('child_added', function (data) {
 //     $('#userEdit).append('<p> + data.val().msg + '</p>');
 //   });
+
+// var url =
+//   "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+
+// $.ajax({
+//   url: url,
+//   method: "GET",
+//   success: function(result) {
+//     if ("copyright" in result) {
+//       $("#copyright").text("Image Credits: " + result.copyright);
+//     } else {
+//       $("#copyright").text("Image Credits: " + "Public Domain");
+//     }
+
+//     if (result.media_type == "video") {
+//       $("#apod_img_id").css("display", "none");
+//       $("#apod_vid_id").attr("src", result.url);
+//     } else {
+//       $("#apod_vid_id").css("display", "none");
+//       $("#apod_img_id").attr("src", result.url);
+//     }
+//     $("#reqObject").text(url);
+//     $("#returnObject").text(JSON.stringify(result, null, 4));
+//     $("#apod_explaination").text(result.explanation);
+//     $("#apod_title").text(result.title);
+//     console.log("response", JSON.stringify(result, null, 4));
+//   }
+// });
+
+//button shows and hides description of picture
+
+// $("#hide").click(function() {
+//   $("p").hide();
+// });
+// $("#show").click(function() {
+//   $("p").show();
+// });
