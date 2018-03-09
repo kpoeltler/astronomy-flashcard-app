@@ -1,12 +1,11 @@
 $(document).ready(function() {
   let state = {
-    cardArr:[{}],
+    cardArr: [],
     current: 0
   };
 
   // var url =
   //   "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
-
 
   // $.ajax({
   //   url: url,
@@ -32,16 +31,36 @@ $(document).ready(function() {
   //     console.log("response", JSON.stringify(result, null, 4));
   //   }
   // });
-//=====================TUES==================================
+  //=====================TUES==================================
   // Issue 37 hdurl property of the cardArr[currentCard] is rendered to the page as an image
-  $.get( "api/all", function( data ) {
-    console.log( data );
+  const render = () => {
+    let apodPicture = $("<img>");
+    $("#card").html(apodPicture.attr("src", state.cardArr[state.current].hdurl));
+  };
+
+  $("#card").click(function() {
+    console.log("is there a paragraph on the page?",);
+    //use jquery. get the card div from the page. see if it has a <p> tag in it
+    if ( $("#card").children().is('p')){
+      let apodPicture = $("<img>");
+      $("#card").html(apodPicture.attr("src", state.cardArr[state.current].hdurl));
+    }else{
+      let apodExplanation = $("<p>");
+      $("#card").html(apodExplanation.text(state.cardArr[state.current].explanation));
+    }
+    
   });
 
-  
-  
+
+
+  $.get("api/all", function(data) {
+    state.cardArr = updateCardArr(state.cardArr, data);
+    console.log(state.cardArr);
+    render();
+  });
+
   //button shows and hides description of picture
-  
+
   // $("#hide").click(function() {
   //   $("p").hide();
   // });
@@ -49,87 +68,71 @@ $(document).ready(function() {
   //   $("p").show();
   // });
 
+  //=====================WEDNESDAY=====================================
 
-
-//=====================WEDNESDAY=====================================
-
-//**upDateArr***
-const updateCardArr= (arr1, data) => {
-  let newArr = [];
-  arr1.forEach(e => newArr.push({ ...e }));
-  if (!data.isArray) {
-    newArr.push(data);
-  } else {
-    data.forEach(e => newArr.push({ ...e }));
+  //**upDateArr***
+  const updateCardArr = (arr1, data) => {
+    let newArr = [];
+    arr1.forEach(e => newArr.push({ ...e }));
+    if (!data.isArray) {
+      newArr.push(data);
+    } else {
+      data.forEach(e => newArr.push({ ...e }));
+    }
+    return newArr;
   };
-  return newArr;
-}
 
-//***resetArr*** 
-const resetArr =() => [];
+  //***resetArr***
+  const resetArr = () => [];
 
-//***removeSubject** 
-const removeSubject = (arr, subject) => arr.filter(e =>e.subject !== subject);
+  //***removeSubject**
+  const removeSubject = (arr, subject) =>
+    arr.filter(e => e.subject !== subject);
 
-//***decrement** 
-const decrement = num => num - 1;
+  //***decrement**
+  const decrement = num => num - 1;
 
-//**increment** 
-const increment = num => + 1;
+  //**increment**
+  const increment = num => +1;
 
-//**resetCount**
-const resetCount = () => 0;
-
+  //**resetCount**
+  const resetCount = () => 0;
 
 
-//**Thursday** 
- 
+//**Friday *
 
+$('#nextbtn').on('click', function () {
+  state.current = increment (state.current);
+  render();
+});
 
+$('#backbtn').on('clcik',function () {
+  state.current = decrement (state.current);
+  render();
+})
 
-//**render function that appends pictures */
-// const dbPicture = (e) => {
-//   e.preventDefault ();
-//   let picture = $('whatever sue has ')
-//   db.ref().push ({ 
-//     msg:input });
-//   }
+  //**Thursday**
 
-//   $('editButton'). on('click', updateUserInput);
-
-//   db.reg().on('child_added', function (data) {
-//     $('#card).append('<img> + data.val().msg + '</img>');
-//   });
-
-
-
-
-
-
-
+  //**Stanford flashcard **/
   //class FlashcardScreen {
   //   constructor(containerElement) {
   //     this.containerElement = containerElement;
   //   }
-
   //   show() {
   //     this.containerElement.classList.remove('inactive');
   //     const flashcardContainer = document.querySelector('#flashcard-container');
   //     const card = new Flashcard(flashcardContainer, 'word', 'definition');
   //   }
-
   //   hide() {
   //     this.containerElement.classList.add('inactive');
   //   }
 });
 
-
-
 //*****User's added description input **** */
 // const updateUserInput = (e) => {
 //   e.preventDefault ();
 //   let input = $('message').val().trim();
-//   db.ref().push ({ 
+//   db.ref().push ({
 //     msg:input });
 //   }
 
@@ -138,4 +141,3 @@ const resetCount = () => 0;
 //   db.reg().on('child_added', function (data) {
 //     $('#userEdit).append('<p> + data.val().msg + '</p>');
 //   });
-  
