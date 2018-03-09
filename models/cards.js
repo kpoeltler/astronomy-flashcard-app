@@ -10,12 +10,8 @@ module.exports =function (sequelize, Sequelize) {
 
 // Define the Astronomy (Card object) for the card table and columns
 var Cards = sequelize.define(
-  "cards",
+  "card",
   {
-    // db will auto Create ID
-    CardID: {
-      type: Sequelize.INTEGER
-    },
     copyright: {
       type: Sequelize.STRING
     },
