@@ -36,12 +36,22 @@ $(document).ready(function() {
   const render = () => {
     let apodPicture = $("<img>");
     $("#card").html(apodPicture.attr("src", state.cardArr[state.current].hdurl));
-    $("#card").click(function() {
+  };
+
+  $("#card").click(function() {
+    console.log("is there a paragraph on the page?",);
+    //use jquery. get the card div from the page. see if it has a <p> tag in it
+    if ( $("#card").children().is('p')){
+      let apodPicture = $("<img>");
+      $("#card").html(apodPicture.attr("src", state.cardArr[state.current].hdurl));
+    }else{
       let apodExplanation = $("<p>");
       $("#card").html(apodExplanation.text(state.cardArr[state.current].explanation));
+    }
     
-    });
-  };
+  });
+
+
 
   $.get("api/all", function(data) {
     state.cardArr = updateCardArr(state.cardArr, data);
@@ -89,7 +99,7 @@ $(document).ready(function() {
   const resetCount = () => 0;
 
 
-//**Friday */
+//**Friday *
 
 $('#nextbtn').on('click', function () {
   state.current = increment (state.current);
