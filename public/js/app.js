@@ -32,6 +32,9 @@ $(document).ready(function() {
       $("#card").html(
         apodExplanation.text(state.cardArr[state.current].explanation)
       );
+      
+      $("#card").append("<i class='material-icons'>&#xe254;</i>");
+      $("#card").append("<p id='edit'>Edit:</p>");
     }
   });
   //=====================================================================
