@@ -33,10 +33,7 @@ $(document).ready(function() {
   // });
   //=====================TUES==================================
   // Issue 37 hdurl property of the cardArr[currentCard] is rendered to the page as an image
-<<<<<<< HEAD
-  $.get( "api/all", function( data ) {
-    console.log("get data", data );
-=======
+
   const render = () => {
     let apodPicture = $("<img>");
     $("#card").html(apodPicture.attr("src", state.cardArr[state.current].hdurl));
@@ -61,7 +58,6 @@ $(document).ready(function() {
     state.cardArr = updateCardArr(state.cardArr, data);
     console.log(state.cardArr);
     render();
->>>>>>> ca69f78deda6810e07aa992f08b5a0724b26c28f
   });
 
   //button shows and hides description of picture
