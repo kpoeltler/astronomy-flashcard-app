@@ -35,7 +35,7 @@ $(document).ready(function() {
 //=====================TUES==================================
   // Issue 37 hdurl property of the cardArr[currentCard] is rendered to the page as an image
   $.get( "api/all", function( data ) {
-    console.log( data );
+    console.log("get data", data );
   });
 
   
