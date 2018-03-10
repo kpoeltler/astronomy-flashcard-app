@@ -2,29 +2,19 @@
 <html>
 
 <head>
-  <!-- Google Tag Manager -->
-  <!-- <script>(function (w, d, s, l, i) {
-      w[ l ] = w[ l ] || []; w[ l ].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[ 0 ],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5S233J');</script> -->
-  <!-- End Google Tag Manager -->
 
+  <title>Astronomy Flashcards</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Astronomy Flashcards</title>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">defer</script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">defer</script>
   <script src="js/menu-screen.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -32,16 +22,58 @@
 </head>
 
 <body>
-  <div class=container>
-  <div id="card" class="flashcard"></div>
-  <button id = 'nextbtn'>next one please</button>
-  <button id = 'backbtn'>go back </button>
-</div>
+  <div class="container">
 
-<!-- Remove this jquery/1.11.3 verion - it is so OLD - 
-  you also have the jquery call script in the header-->
+    <div id="card" class="flashcard">
+    </div>
+
+  </div>
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    edit description</button>
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 id="edit-section" class="modal-title">Please add your edits</h4>
+        </div>
+        <div class="modal-body">
+          <p> Feel free to add a link to your university department's website</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id='nextbtn'>next one please</button>
+  <button id='backbtn'>go back </button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
-
 
 </body>
 

@@ -5,10 +5,14 @@
   background-color: #dadde5;
   border-radius: 10px;
   box-sizing: border-box;
-  width: 520px;
+  width: 620px;
+  height:550px;
   padding: 10px;
 }
 
 #db-picture{
-  width: 500px;
+  width: 600px;
 }
+
+
+
