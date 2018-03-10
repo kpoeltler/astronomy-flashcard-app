@@ -3,10 +3,15 @@ $(document).ready(function() {
     cardArr: [],
     current: 0
   };
-  
+
+  /**
+   * renders a picture and paragraph onto index.html
+   * @return - appends a picture and paragraph to index.html
+   */
+
   const render = () => {
     let apodPicture = $("<img>");
-    apodPicture.attr("id","db-picture");
+    apodPicture.attr("id", "db-picture");
     $("#card").html(
       apodPicture.attr("src", state.cardArr[state.current].hdurl)
     );
@@ -20,7 +25,7 @@ $(document).ready(function() {
     ) {
       let apodPicture = $("<img>");
       apodPicture.attr("src", state.cardArr[state.current].hdurl);
-      apodPicture.attr("id","db-picture");
+      apodPicture.attr("id", "db-picture");
       console.log("pic", apodPicture);
       $("#card").html(apodPicture);
     } else {
@@ -28,11 +33,15 @@ $(document).ready(function() {
       $("#card").html(
         apodExplanation.text(state.cardArr[state.current].explanation)
       );
-      
       $("#card").append("<i class='material-icons'>&#xe254;</i>");
       $("#card").append("<p id='edit'>Edit:</p>");
+      
+    
+      
     }
   });
+  
+
   //=====================================================================
   $.get("api/all", function(data) {
     state.cardArr = updateCardArr(state.cardArr, data);
@@ -83,7 +92,8 @@ $(document).ready(function() {
    * A simple incrementer
    * @param {num} num - This any number to be incremented
    * @return {num}  - the num param incremented by one
-   */ 
+   */
+
   const increment = num => +1;
 
   /**
@@ -91,6 +101,7 @@ $(document).ready(function() {
    * @return - zero
    */
   const resetCount = () => 0;
+
 
   $("#nextbtn").on("click", function() {
     state.current = increment(state.current);
@@ -101,6 +112,10 @@ $(document).ready(function() {
     state.current = decrement(state.current);
     render();
   });
+
+  
+
+
 
   //**Stanford flashcard **/
   //class FlashcardScreen {
