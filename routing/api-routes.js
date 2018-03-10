@@ -1,18 +1,14 @@
-// api-routes.js - Set of routes for displaying and saving data to the db
+// api-routes.js - 
+// Set of routes for displaying and saving data to the db
 
 
 let db = require("../models");
 
 console.log("db",db);
 
-// Create a GET route '/api/all' #35
-// Add a get route for the path '/api/all' return a sample JSON
-// This is temporary until db is set up
-
-
 module.exports = function(app) {
 
-    // GET route for getting all of the cards
+    // GET route for getting all of the cards as JSON
     app.get("/api/all", function(req, res) {
         //use sequlize findAll to retrieve from db and pass to frontend
 
@@ -31,8 +27,11 @@ module.exports = function(app) {
 
 
 
+// Make an AJAX put request to test the PUT route.
 
-
+// A PUT request is made with path '/api/description'
+// an object is sent with a userDesc and id
+// an object is returned from the server and console.logged
 
     // PUT route that accesses the req.body 
     // and updates the userDesc in the db where the id matches.
