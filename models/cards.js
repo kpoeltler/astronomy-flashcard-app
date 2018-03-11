@@ -5,7 +5,7 @@
 // var env  = process.env.NODE_ENV || 'development';
 
 // var sequelize = new Sequelize(process.env[config.use_env_variable]);
-module.exports =function (sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {
 
 // Define the Astronomy (Card object) for the card table and columns from the db
 var Cards = sequelize.define(
