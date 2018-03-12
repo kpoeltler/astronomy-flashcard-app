@@ -1,4 +1,10 @@
 
+// If helpful ?
+// <p id="demo"></p>
+// var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
+// document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;
+
+
 
 /**
  * Get the current card id
@@ -9,7 +15,7 @@ var currentCardID = 1;
 
 
 /**
- * There actualy needs to to be another table for 
+ * There actually needs to to be another table for 
  * user_desc so it saves as a thread of comments
  * not just one.
  * TO DO
@@ -97,6 +103,7 @@ var addUserComment = function (comment) {
 */
 var addAPIDaily = function () {  
 
+    // Set to empty string incase any are missing
     var copyright = "";
     var date = "";
     var explanation = "";
@@ -122,23 +129,56 @@ var addAPIDaily = function () {
 
     var queryURL = "api/insert-card";
 
-    //$.ajax({
-        //type: 'PUT',
-        //url: queryURL,
-        //data: addAPIDailyObj,
-        //    success: function(data){
-        //        console.log("success");
-        //        console.log(data);
-        //    },
-        //    error: function(data){
-        //    console.log("error");
-        //    console.log(data);
-        //    }
-        //});
-    //};
-
+    $.ajax({
+        type: 'PUT',
+        url: queryURL,
+        data: addAPIDailyObj,
+        success: function(data){
+            console.log("success");
+            console.log(data);
+        },
+        error: function(data){
+            console.log("error");
+            console.log(data);
+        }
+    });
 };
 
-// TEST
-addAPIDaily();      
 
+// TEST
+//addAPIDaily();      
+
+let apod = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+
+var JsonToObj;
+
+let success = $.ajax({
+    url: apod,
+    method: "GET",
+    success: function(result) {
+
+        //console.log("result " + result); 
+
+
+        Object.keys(result).forEach(function(key) {
+
+            // Display All Keys and values
+            console.log(key, result[key]);
+          
+        });
+          
+        // Convert API callback to an object
+        //JsonToObj = JSON.parse(result);
+        //console.log("JsonToObj " + JsonToObj);        
+
+
+        //console.log("success");
+
+
+    },
+    error: function(result) {
+        console.log("error");
+        console.log(result);
+    }
+
+});
