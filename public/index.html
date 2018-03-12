@@ -15,9 +15,9 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">defer</script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">defer</script>
-  <!-- <script src="javascript/menu-screen.js" defer></script> -->
-  <script src="javascript/app.js" defer></script>
-  <!-- <script src="javascriptnode s/main.js" defer></script> -->
+  <script src="js/menu-screen.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/main.js" defer></script>
 
 </head>
 
@@ -26,7 +26,8 @@
     <div id="card" class="flashcard">
     </div>
   </div>
-  
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    edit description</button>
   <div class="modal fade" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -44,11 +45,11 @@
           <p> input form </p>
           <!-- I need to write a post route in app.js to save the changes
           app.post/usercomments/--> 
+
           <p> Feel free to add a link to your university department's website</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button class="btn btn-primary odom-submit">Submit changes</button>
         </div>
       </div>
     </div>
@@ -58,30 +59,7 @@
   <button id='backbtn'>go back </button>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  <script="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
 
 </body>
 
