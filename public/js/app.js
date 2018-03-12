@@ -35,11 +35,17 @@ $(document).ready(function() {
       let apodExplanation = $("<p>");
       $("#card").html(
         apodExplanation.text(state.cardArr[state.current].explanation)
-      );
+      )
+      let userExplanation = $("<p>");
+        $("#card").append(
+          userExplanation.text(state.cardArr[state.current].user_desc) 
+      )
+    }
+    
       $("#card").append(
         "<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>"
       );   
-    }
+    
   });
 
 
