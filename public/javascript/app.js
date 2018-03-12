@@ -25,22 +25,21 @@ $(document).ready(function() {
       let apodPicture = $("<img>");
       apodPicture.attr("src", state.cardArr[state.current].hdurl);
       apodPicture.attr("id", "db-picture");
-      console.log("front");
+      
       $("#card").html(apodPicture);
     } else {
       let apodExplanation = $("<p>");
       $("#card").html(
         apodExplanation.text(state.cardArr[state.current].explanation)
       );
-      $("#card").append("<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>");
-      console.log('back');
-      // $("#card").append("<p id='edit'>Edit:</p>");
-      
-    
+      $("#card").append(
+        "<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>"
+      );  
       
     }
+
   });
-  
+
 
   //=====================================================================
   $.get("api/all", function(data) {
@@ -67,7 +66,7 @@ $(document).ready(function() {
   };
 
   /**
-   * resets to an empty array
+   * resets  empty array
    * @return {num}  - the num param incremented by one
    */
   const resetArr = () => [];
@@ -78,7 +77,8 @@ $(document).ready(function() {
    * @param {string} subject - This any number to be incremented
    * @return {num}  - the num param incremented by one
    */
-  const removeSubject = (arr, subject) => arr.filter(e => e.subject !== subject);
+  const removeSubject = (arr, subject) =>
+    arr.filter(e => e.subject !== subject);
 
   /**
    * A simple decrementer
@@ -92,7 +92,6 @@ $(document).ready(function() {
    * @param {num} num - This any number to be incremented
    * @return {num}  - the num param incremented by one
    */
-
   const increment = num => +1;
 
   /**
@@ -100,7 +99,6 @@ $(document).ready(function() {
    * @return - zero
    */
   const resetCount = () => 0;
-
 
   $("#nextbtn").on("click", function() {
     state.current = increment(state.current);
@@ -111,15 +109,6 @@ $(document).ready(function() {
     state.current = decrement(state.current);
     render();
   });
-
-  
-
-
-
-
-
-
-
 
   //**Stanford flashcard **/
   //class FlashcardScreen {
