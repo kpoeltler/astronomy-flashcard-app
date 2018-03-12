@@ -25,28 +25,16 @@ $(document).ready(function() {
       let apodPicture = $("<img>");
       apodPicture.attr("src", state.cardArr[state.current].hdurl);
       apodPicture.attr("id", "db-picture");
-<<<<<<< HEAD:public/javascript/app.js
       
-=======
-      console.log("pic", apodPicture);
->>>>>>> 68a59d10f0bb6b2595f8a3d04b919920f9ce5a4e:public/js/app.js
       $("#card").html(apodPicture);
     } else {
       let apodExplanation = $("<p>");
       $("#card").html(
         apodExplanation.text(state.cardArr[state.current].explanation)
       );
-<<<<<<< HEAD:public/javascript/app.js
       $("#card").append(
         "<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>"
-      );  
-=======
-      $("#card").append("<i class='material-icons'>&#xe254;</i>");
-      $("#card").append("<p id='edit'>Edit:</p>");
-      
-    
->>>>>>> 68a59d10f0bb6b2595f8a3d04b919920f9ce5a4e:public/js/app.js
-      
+      );   
     }
 
   });
@@ -121,13 +109,6 @@ $(document).ready(function() {
     render();
   });
 
-<<<<<<< HEAD:public/javascript/app.js
-=======
-  
-
-
-
->>>>>>> 68a59d10f0bb6b2595f8a3d04b919920f9ce5a4e:public/js/app.js
   //**Stanford flashcard **/
   //class FlashcardScreen {
   //   constructor(containerElement) {
