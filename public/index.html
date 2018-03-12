@@ -22,6 +22,10 @@
 </head>
 
 <body>
+
+    <div id="wrapper">    
+        <div class="container-fluid">
+
   <div class="container">
     <div id="card" class="flashcard">
     </div>
@@ -39,8 +43,10 @@
                 <label for="POST-name">Name:</label>
                 <input id="POST-name" type="text" name="name">
                 <input type="submit" value="Save">
-              
+
             <input id="user-comment" class="form-control form-control-lg" type="text" placeholder="">
+            <button id="add-comment-btn" type="button" class="btn btn-outline-dark">Submit</button>
+
           </form>
           <p> input form </p>
           <!-- I need to write a post route in app.js to save the changes
@@ -57,10 +63,12 @@
 <div id= "next">
   <button id='nextbtn'>next one please</button>
   <button id='backbtn'>go back </button>
-  </div>
 
-  <script="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
 
+  </div> <!--// container -->
+
+</div> <!--// container-fluid -->
+
+</div><!-- // #wrapper --> 
 </body>
-
 </html>

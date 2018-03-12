@@ -7,6 +7,8 @@
 
 
 /**
+ * COPIED OVER TO app.js
+ * 
  * Get the current card id
  * TO DO
  */
@@ -24,6 +26,8 @@ var currentCardID = 1;
 
 
 /**
+ * COPIED OVER TO app.js
+ * 
  * Event listener on button #add-comment-btn
  * When #add-comment-btn is clicked
  * 
@@ -45,6 +49,7 @@ $("#add-comment-btn").on( "click", function(event) {
 
 
 /**
+ * COPIED OVER TO app.js
  * @function 
  * @param {string} userComment - comment user enter
  *
