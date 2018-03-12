@@ -59,7 +59,7 @@ var expect = require("chai").expect;
 const resetArr = () => []; 
 
 describe("resetArr",() =>{
-   it("will reset the card array", () => expect(resetArr()).to.deep.equal([]))});
+   it("will reset the card array", () => expect(resetArr()).to.deep.equal([]) ) } );
 
 
 
@@ -79,7 +79,8 @@ const removeSubject = (array, subject) => array.filter(e =>e.subject !== subject
 
 
 describe("removeSubject",function (){
-    it("will remove the subject value in an array", function () { expect(removeSubject("array1", "earth")([{hdurl:"boo", subject:"earth", picture:"selfie"}])).to.deep.equal([{hdurl:"boo", picture:"selfie"}])})});
+    it("will remove the subject value in an array", function () { 
+        expect(removeSubject("array1", "earth")([{hdurl:"boo", subject:"earth", picture:"selfie"}])).to.deep.equal([{hdurl:"boo", picture:"selfie"}])})});
 
 // describe("removeSubject",() =>{
 //         it("will filter through an array and remove the subject passed as an argument", (arr1, earth) => expect(removeSubject(["boo", earth,"selfie"])).to.deep.equal(["boo","selfie"]))});
@@ -194,4 +195,6 @@ const resetCount = () => 0;
 
 function Subject(e){ 
     const removeSubject = function (arr, subject) {
-arr.filter(e =>e.subject !== subject)
+        arr.filter(e =>e.subject !== subject)
+    }
+}
