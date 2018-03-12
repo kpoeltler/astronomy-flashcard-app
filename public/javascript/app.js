@@ -25,15 +25,16 @@ $(document).ready(function() {
       let apodPicture = $("<img>");
       apodPicture.attr("src", state.cardArr[state.current].hdurl);
       apodPicture.attr("id", "db-picture");
-      console.log("pic", apodPicture);
+      console.log("front");
       $("#card").html(apodPicture);
     } else {
       let apodExplanation = $("<p>");
       $("#card").html(
         apodExplanation.text(state.cardArr[state.current].explanation)
       );
-      $("#card").append("<i class='material-icons'>&#xe254;</i>");
-      $("#card").append("<p id='edit'>Edit:</p>");
+      $("#card").append("<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>");
+      console.log('back');
+      // $("#card").append("<p id='edit'>Edit:</p>");
       
     
       
@@ -77,8 +78,7 @@ $(document).ready(function() {
    * @param {string} subject - This any number to be incremented
    * @return {num}  - the num param incremented by one
    */
-  const removeSubject = (arr, subject) =>
-    arr.filter(e => e.subject !== subject);
+  const removeSubject = (arr, subject) => arr.filter(e => e.subject !== subject);
 
   /**
    * A simple decrementer
@@ -113,6 +113,11 @@ $(document).ready(function() {
   });
 
   
+
+
+
+
+
 
 
 
