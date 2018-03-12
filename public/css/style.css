@@ -1,5 +1,15 @@
 
+/* Background image on custom wrapper - More Flexibility */
+#wrapper {
+  background-image: url(../images/moon-bg.jpg);
+  background-repeat: no-repeat;
+/* Another tag for cover - have to look it up */
+  min-height: 600px;
+}
 
+.container-fluid {
+  padding-top: 30px;
+}
 
 #card {
   background-color: #dadde5;
@@ -8,11 +18,15 @@
   width: 620px;
   height:550px;
   padding: 10px;
+  margin: 0 auto;
 }
 
 #db-picture{
   width: 600px;
 }
+
+
+
 
 
 

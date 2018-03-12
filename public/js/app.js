@@ -4,6 +4,9 @@ $(document).ready(function() {
     current: 0
   };
 
+
+
+
   /**
    * renders a picture and paragraph onto index.html
    * @return - appends a picture and paragraph to index.html
@@ -16,6 +19,7 @@ $(document).ready(function() {
     );
   };
 
+
   $("#card").click(function() {
     if (
       $("#card")
@@ -25,22 +29,19 @@ $(document).ready(function() {
       let apodPicture = $("<img>");
       apodPicture.attr("src", state.cardArr[state.current].hdurl);
       apodPicture.attr("id", "db-picture");
-      console.log("front");
+      
       $("#card").html(apodPicture);
     } else {
       let apodExplanation = $("<p>");
       $("#card").html(
         apodExplanation.text(state.cardArr[state.current].explanation)
       );
-      $("#card").append("<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>");
-      console.log('back');
-      // $("#card").append("<p id='edit'>Edit:</p>");
-      
-    
-      
+      $("#card").append(
+        "<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>"
+      );   
     }
   });
-  
+
 
   //=====================================================================
   $.get("api/all", function(data) {
@@ -67,7 +68,7 @@ $(document).ready(function() {
   };
 
   /**
-   * resets to an empty array
+   * resets  empty array
    * @return {num}  - the num param incremented by one
    */
   const resetArr = () => [];
@@ -78,7 +79,8 @@ $(document).ready(function() {
    * @param {string} subject - This any number to be incremented
    * @return {num}  - the num param incremented by one
    */
-  const removeSubject = (arr, subject) => arr.filter(e => e.subject !== subject);
+  const removeSubject = (arr, subject) =>
+    arr.filter(e => e.subject !== subject);
 
   /**
    * A simple decrementer
@@ -92,7 +94,6 @@ $(document).ready(function() {
    * @param {num} num - This any number to be incremented
    * @return {num}  - the num param incremented by one
    */
-
   const increment = num => +1;
 
   /**
@@ -101,24 +102,91 @@ $(document).ready(function() {
    */
   const resetCount = () => 0;
 
-
   $("#nextbtn").on("click", function() {
     state.current = increment(state.current);
     render();
   });
 
-  $("#backbtn").on("clcik", function() {
+  $("#backbtn").on("click", function() {
     state.current = decrement(state.current);
     render();
   });
 
-  
+
+/**
+ * Get the current card id
+ * TO DO
+ */
+//*** This needs to be the id coming from the current card
+var currentCardID = 1; 
+
+
+/**
+ * Event listener on button #add-comment-btn
+ * When #add-comment-btn is clicked
+ * Get content entered from #user-comment input
+ * Invoke function addUserComment passing the 
+ * content from input field
+ */
+$("#add-comment-btn").on( "click", function(event) {
+  event.preventDefault();
+
+  // get value from #user-comment 
+  var userComment = $("#user-comment").val().trim();
+  if(userComment !== "") {
+      // Invoke function
+      addUserComment(userComment);
+  }
+});
 
 
 
 
 
 
+
+
+
+
+
+
+
+/**
+ * @function 
+ * @param {string} userComment - comment user enter
+ *
+ * Send user comment
+ * Get specific (current card ID)
+ * Send (current card ID) and Comment via Ajax
+ *
+ * ID will be matched with db card row 
+ * Then Comment added into column user_desc
+ */
+var addUserComment = function (comment) {  
+
+  // Constructing a card object to hand to the database
+  // column user_desc to be added
+  var userCommentObj = {
+      id: currentCardID,
+      user_desc: comment,
+  };
+
+  var queryURL = "api/description/" + currentCardID;
+
+  $.ajax({
+      type: 'PUT',
+      url: queryURL,
+      data: userCommentObj,
+      success: function(data){
+          console.log("success");
+          console.log(data);
+      },
+      error: function(data){
+          console.log("error");
+          console.log(data);
+      }
+  });
+};
 
 
   //**Stanford flashcard **/

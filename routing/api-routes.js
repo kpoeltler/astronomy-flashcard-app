@@ -16,7 +16,7 @@ module.exports = function(app) {
     // GET route for getting all of the cards - SELECT ALL
     // View http://localhost:8080/api/all
     app.get("/api/all", function(req, res) {
-        // use sequlize findAll to retrieve from db and pass to frontend
+        // use sequelize findAll to retrieve from db and pass to front-end
         // findAll returns all entries for the cards table when used with no options
         db.card.findAll({}).then(function(dbastronomy) {
             res.json(dbastronomy);
@@ -55,7 +55,7 @@ module.exports = function(app) {
     app.put("/api/description/:id", function(req, res) {
         // An object is sent with a user_desc and id
         // I added id in query string also,
-        // just incase we want extra validation
+        // just in case we want extra validation
         // using & http://docs.sequelizejs.com/manual/tutorial/querying.html
 
         db.card.update(
@@ -79,32 +79,15 @@ module.exports = function(app) {
             // res.send(cardID);
     });
 
-    
-    // PUT route  - INSERT a new card row
-    // WORKING ON
+
+    // POST route for saving a new card
     app.put("/api/insert-card", function(req, res) {
-
-        console.log(req.body);
-
-        db.card.create({
-            copyright: req.body.copyright,
-            date: req.body.date,
-            explanation: req.body.explanation,
-            hdurl: req.body.hdurl, 
-            media_type: req.media_type, 
-            service_version: req.body.service_version, 
-            title: req.body.title, 
-            url: req.body.url
-        })
-        .then(function(dbAddcard) {
-            res.json(dbAddcard);
+        db.card.create(req.body).then(function(dbAddCard) {
+            res.json(dbAddCard);
+        }).then(function(dbAddCard) {
+            res.json(dbAddCard);
         });
-
-        // TESTING Send back Test message
-        res.json(req.body);
-        // res.send(cardID);
-
-});
+    });
 
 
 
