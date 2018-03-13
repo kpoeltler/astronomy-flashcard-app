@@ -1,11 +1,10 @@
 $(document).ready(function() {
   let state = {
     cardArr: [],
-    current: 0
+    current: 0,
+    subject: [],
+    currentSubject: -1
   };
-
-
-
 
   /**
    * renders a picture and paragraph onto index.html
@@ -51,7 +50,7 @@ $(document).ready(function() {
 
   //=====================================================================
   $.get("api/all", function(data) {
-    state.cardArr = updateCardArr(state.cardArr, data);
+    state.cardArr = updateArr(state.cardArr, data);
     console.log(state.cardArr);
     render();
   });
@@ -62,7 +61,7 @@ $(document).ready(function() {
    * @param {String} data - This is data from the db
    * @return {[{}]}  - a new array that has all the pushed objects
    */
-  const updateCardArr = (arr1, data) => {
+  const updateArr = (arr1, data) => {
     let newArr = [];
     arr1.forEach(e => newArr.push({ ...e }));
     if (!data.isArray) {
