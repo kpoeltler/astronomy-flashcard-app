@@ -81,7 +81,7 @@ module.exports = function(app) {
 
 
     // POST route for saving a new card
-    app.put("/api/insert-card", function(req, res) {
+    app.post("/api/insert-card", function(req, res) {
         db.card.create(req.body).then(function(dbAddCard) {
             res.json(dbAddCard);
         }).then(function(dbAddCard) {
