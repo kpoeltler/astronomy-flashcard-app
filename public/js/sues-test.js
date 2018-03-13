@@ -20,7 +20,7 @@ var currentCardID = 1;
  * There actually needs to to be another table for 
  * user_desc so it saves as a thread of comments
  * not just one.
- * TO DO
+ * We are just adding this on to the end of the last comment
  */
 
 
@@ -30,15 +30,12 @@ var currentCardID = 1;
  * 
  * Event listener on button #add-comment-btn
  * When #add-comment-btn is clicked
- * 
  * Get content entered from #user-comment input
- * 
  * Invoke function addUserComment passing the 
  * content from input field
  */
 $("#add-comment-btn").on( "click", function(event) {
     event.preventDefault();
-
     // get value from #user-comment 
     var userComment = $("#user-comment").val().trim();
     if(userComment !== "") {
@@ -50,13 +47,12 @@ $("#add-comment-btn").on( "click", function(event) {
 
 /**
  * COPIED OVER TO app.js
+ * 
  * @function 
  * @param {string} userComment - comment user enter
- *
  * Send user comment
  * Get specific (current card ID)
  * Send (current card ID) and Comment via Ajax
- *
  * ID will be matched with db card row 
  * Then Comment added into column user_desc
  */
@@ -89,24 +85,20 @@ var addUserComment = function (comment) {
 
 /********************************************************/
 /* WORKING ON */
-/* TESTING - API CALL */
 
-/**
-* TODO
-* Need a timer to get API call every 24 hours
-* And Invoke
-* addAPIDaily();
-*/
 
 
 /**
 * WORKING ON
 * Add API Call to database
-* Get API Info 
+* @function
+* Get API Info every 24 hours
 * Set all to empty string - Just incase any field is empty
 * Send via Ajax
 */
-var addAPIDaily = function () {  
+var addAPIDaily = function (theResult) {  
+
+    var JsonToObj;
 
     // Set to empty string incase any are missing
     var copyright = "";
@@ -130,12 +122,24 @@ var addAPIDaily = function () {
         url: url,
     };
 
-    console.log("addAPIDailyObj" + addAPIDailyObj)
+    // Match API with Column Names
+    // The key1 or key2 is the key
+    // addAPIDailyObj[key1] is the value
+    // theResult[key2] is the value
+    Object.keys(addAPIDailyObj).forEach(function(key1) {
+        Object.keys(theResult).forEach(function(key2) {
+            if( key1 === key2 ) {
+                addAPIDailyObj[key1] = theResult[key2];
+            }
+        });
+    }); 
 
-    var queryURL = "api/insert-card";
+    //console.log("addAPIDailyObj" + addAPIDailyObj)
+
+    var queryURL = "/api/insert-card";
 
     $.ajax({
-        type: 'PUT',
+        type: 'POST',
         url: queryURL,
         data: addAPIDailyObj,
         success: function(data){
@@ -150,40 +154,41 @@ var addAPIDaily = function () {
 };
 
 
-// TEST
-//addAPIDaily();      
+/**
+* Get API Call via Ajax
+* @function
+* Get API Info every 24 hours
+*/
+var getAPI = function() {
 
-let apod = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+    let apod = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
 
-var JsonToObj;
-
-let success = $.ajax({
-    url: apod,
-    method: "GET",
-    success: function(result) {
-
-        //console.log("result " + result); 
-
-
-        Object.keys(result).forEach(function(key) {
-
-            // Display All Keys and values
-            console.log(key, result[key]);
-          
-        });
-          
-        // Convert API callback to an object
-        //JsonToObj = JSON.parse(result);
-        //console.log("JsonToObj " + JsonToObj);        
+    let success = $.ajax({
+        url: apod,
+        method: "GET",
+        success: function(result) {
+            addAPIDaily(result);
+        },
+        error: function(result) {
+            console.log("error");
+            console.log(result);
+        }
+    })
+};
 
 
-        //console.log("success");
+/**
+* NOT COPIED OVER YET
+* Timer to invoke API call every 24 hours
+* Then Invoke addAPIDaily(); function
+* to save API
+* 1 day = 86,400,000 ms
+*/
+setInterval(function() {
+    var getApiCall = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+    
+    getAPI();
 
+}, 86400000); // Every 24hrs
 
-    },
-    error: function(result) {
-        console.log("error");
-        console.log(result);
-    }
-
-});
+//}, 5000);
