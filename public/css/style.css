@@ -4,11 +4,11 @@
   background-image: url(../images/moon-bg.jpg);
   background-repeat: no-repeat;
 /* Another tag for cover - have to look it up */
-  min-height: 600px;
+  min-height: 1000px;
 }
 
 .container-fluid {
-  padding-top: 30px;
+  padding-top: 40px;
 }
 
 #card {
@@ -26,7 +26,7 @@
 }
 
 
-
-
-
-
+.button {
+  border-style: solid;
+  border-color: white;
+}
