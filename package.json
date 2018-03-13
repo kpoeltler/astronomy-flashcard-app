@@ -24,6 +24,7 @@
   "homepage": "https://github.com/kpoeltler/astronomy-flashcard-app#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
     "chai-param": "^0.1.2",
     "chai-shallow-deep-equal": "^1.4.6",
     "express": "^4.16.2",
