@@ -14,9 +14,9 @@ $(document).ready(function() {
   const render = () => {
     let apodPicture = $("<img>");
     apodPicture.attr("id", "db-picture");
-    $("#card").html(
-      apodPicture.attr("src", state.cardArr[state.current].hdurl)
-    );
+    console.log("current",  state.current);
+    apodPicture.attr("src", state.cardArr[0][state.current].hdurl);
+    $("#card").html(apodPicture);
   };
 
 
@@ -27,18 +27,18 @@ $(document).ready(function() {
         .is("p")
     ) {
       let apodPicture = $("<img>");
-      apodPicture.attr("src", state.cardArr[state.current].hdurl);
+      apodPicture.attr("src", state.cardArr[0][state.current].hdurl);
       apodPicture.attr("id", "db-picture");
       
       $("#card").html(apodPicture);
     } else {
       let apodExplanation = $("<p>");
       $("#card").html(
-        apodExplanation.text(state.cardArr[state.current].explanation)
+        apodExplanation.text(state.cardArr[0][state.current].explanation)
       )
       let userExplanation = $("<p>");
         $("#card").append(
-          userExplanation.text(state.cardArr[state.current].user_desc) 
+          userExplanation.text(state.cardArr[0][state.current].user_desc) 
       )
     }
     
@@ -100,7 +100,7 @@ $(document).ready(function() {
    * @param {num} num - This any number to be incremented
    * @return {num}  - the num param incremented by one
    */
-  const increment = num => +1;
+  const increment = num => num + 1;
 
   /**
    * Resets the counter
