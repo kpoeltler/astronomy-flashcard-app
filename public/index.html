@@ -23,51 +23,56 @@
 
 <body>
 
-    <div id="wrapper">    
-        <div class="container-fluid">
+  <div id="wrapper">
+    <div class="container-fluid">
 
-  <div class="container">
-    <div id="card" class="flashcard">
-    </div>
-  </div>
-  
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 id="edit-section" class="modal-title">Please add your edits</h4>
+      <div class="container">
+        <div id="card" class="flashcard">
         </div>
-        <div class="modal-body">
-            <form action="" method="post">
+      </div>
+
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 id="edit-section" class="modal-title">Please add your edits</h4>
+            </div>
+            <div class="modal-body">
+              <form action="" method="post">
                 <label for="POST-name">Name:</label>
                 <input id="POST-name" type="text" name="name">
                 <input type="submit" value="Save">
 
-            <input id="user-comment" class="form-control form-control-lg" type="text" placeholder="">
-            <button id="add-comment-btn" type="button" class="btn btn-outline-dark">Submit</button>
+                <input id="user-comment" class="form-control form-control-lg" type="text" placeholder="">
+                <button id="add-comment-btn" type="button" class="btn btn-outline-dark">Submit</button>
 
-          </form>
-          <p> input form </p>
-          <!-- I need to write a post route in app.js to save the changes
-          app.post/usercomments/--> 
+              </form>
+              <p> input form </p>
+              <!-- I need to write a post route in app.js to save the changes
+          app.post/usercomments/-->
 
-          <p> Feel free to add a link to your university department's website</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <p> Feel free to add a link to your university department's website</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
       </div>
+      <div id="next">
+        <button id='backbtn'>go back </button>
+        <button id='nextbtn'>next one please</button>
+
+
+
+      </div>
+      <!--// container -->
+
     </div>
+    <!--// container-fluid -->
+
   </div>
-<div id= "next">
-  <button id='nextbtn'>next one please</button>
-  <button id='backbtn'>go back </button>
-
-
-  </div> <!--// container -->
-
-</div> <!--// container-fluid -->
-
-</div><!-- // #wrapper --> 
+  <!-- // #wrapper -->
 </body>
+
 </html>
