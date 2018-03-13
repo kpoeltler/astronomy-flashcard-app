@@ -30,6 +30,7 @@
     "fs": "0.0.1-security",
     "jasmine": "^3.1.0",
     "mysql2": "^1.5.2",
+    "npm": "^5.7.1",
     "path": "^0.12.7",
     "popper.js": "^1.12.9",
     "sequelize": "^4.35.2",
