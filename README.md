@@ -18,12 +18,12 @@ jQuery
 MySQL
 
 **Deployment**
-Uses Heroku
+Heroku
 
 
 **Authors**
-Susan Bryant
-Katie Poeltler
+Susan Bryant,
+Katie Poeltler,
 and a special thanks to Cj Jordan
 
 **License**
