@@ -16,9 +16,13 @@ In my humble opinion, one of the best parts to the application is how we decided
 **Built With**
 
 -Bootstrap V3 - CSS framework
+
 -NASA's APOD Api 
+
 -jQuery
+
 -MySQL
+
 -JavaScript
 
 **Deployment**
@@ -29,7 +33,9 @@ In my humble opinion, one of the best parts to the application is how we decided
 **Authors**
 
 -Susan Bryant,
+
 -Katie Poeltler,
+
 -and special thanks to Cj Jordan
 
 **License**
@@ -39,6 +45,7 @@ In my humble opinion, one of the best parts to the application is how we decided
 **Acknowledgments**
 
 -Stanford's CS193X Homework 3 assignment, that inspired us to build flashcards. 
+
 -Inspiration shout out to NASA
 
 
