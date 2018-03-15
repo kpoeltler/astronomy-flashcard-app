@@ -17,8 +17,6 @@ $(document).ready(function() {
     apodPicture.attr("src", state.cardArr[0][state.current].hdurl);
     $("#card").html(apodPicture);
   };
-
-
   $("#card").click(function() {
     if (
       $("#card")
@@ -46,7 +44,6 @@ $(document).ready(function() {
       );   
     
   });
-
 
   //=====================================================================
   $.get("api/all", function(data) {
@@ -117,14 +114,12 @@ $(document).ready(function() {
     render();
   });
 
-
 /**
  * Get the current card id
  * TO DO
  */
 //*** This needs to be the id coming from the current card
 var currentCardID = 1; 
-
 
 /**
  * Event listener on button #add-comment-btn
@@ -144,26 +139,12 @@ $("#add-comment-btn").on( "click", function(event) {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * @function 
  * @param {string} userComment - comment user enter
- *
  * Send user comment
  * Get specific (current card ID)
  * Send (current card ID) and Comment via Ajax
- *
  * ID will be matched with db card row 
  * Then Comment added into column user_desc
  */
@@ -193,69 +174,164 @@ var addUserComment = function (comment) {
   });
 };
 
-
-  //**Stanford flashcard **/
-  //class FlashcardScreen {
-  //   constructor(containerElement) {
-  //     this.containerElement = containerElement;
-  //   }
-  //   show() {
-  //     this.containerElement.classList.remove('inactive');
-  //     const flashcardContainer = document.querySelector('#flashcard-container');
-  //     const card = new Flashcard(flashcardContainer, 'word', 'definition');
-  //   }
-  //   hide() {
-  //     this.containerElement.classList.add('inactive');
-  //   }
 });
 
-//*****User's added description input **** */
-// const updateUserInput = (e) => {
-//   e.preventDefault ();
-//   let input = $('message').val().trim();
-//   db.ref().push ({
-//     msg:input });
-//   }
+/**
+* Add API Call to database
+* @function
+* Get API Info every 24 hours
+* Set all to empty string - Just incase any field is empty
+* Send via Ajax
+*/
+var addAPIDaily = function (theResult) {  
 
-//   $('editButton'). on('click', updateUserInput);
+  // Set to empty string incase any are missing
+  var copyright = "";
+  var date = "";
+  var explanation = "";
+  var hdurl = "";
+  var media_type = "";
+  var service_version = "";
+  var title = "";
+  var url = "";
 
-//   db.reg().on('child_added', function (data) {
-//     $('#userEdit).append('<p> + data.val().msg + '</p>');
-//   });
+  // Constructing a full card object from the api call to database
+  var addAPIDailyObj = {
+      copyright: copyright,
+      date: date,
+      explanation: explanation,
+      hdurl: hdurl,
+      media_type: media_type,
+      service_version: service_version,
+      title: title,
+      url: url,
+  };
 
-// var url =
-//   "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+  // Match API with Column Names
+  // The key1 or key2 is the key
+  // addAPIDailyObj[key1] is the value
+  // theResult[key2] is the value
+  Object.keys(addAPIDailyObj).forEach(function(key1) {
+      Object.keys(theResult).forEach(function(key2) {
+          if( key1 === key2 ) {
+              addAPIDailyObj[key1] = theResult[key2];
+          }
+      });
+  }); 
 
-// $.ajax({
-//   url: url,
-//   method: "GET",
-//   success: function(result) {
-//     if ("copyright" in result) {
-//       $("#copyright").text("Image Credits: " + result.copyright);
-//     } else {
-//       $("#copyright").text("Image Credits: " + "Public Domain");
-//     }
+  var queryURL = "/api/insert-card";
 
-//     if (result.media_type == "video") {
-//       $("#apod_img_id").css("display", "none");
-//       $("#apod_vid_id").attr("src", result.url);
-//     } else {
-//       $("#apod_vid_id").css("display", "none");
-//       $("#apod_img_id").attr("src", result.url);
-//     }
-//     $("#reqObject").text(url);
-//     $("#returnObject").text(JSON.stringify(result, null, 4));
-//     $("#apod_explaination").text(result.explanation);
-//     $("#apod_title").text(result.title);
-//     console.log("response", JSON.stringify(result, null, 4));
-//   }
-// });
+  $.ajax({
+      type: 'POST',
+      url: queryURL,
+      data: addAPIDailyObj,
+      success: function(data){
+          console.log("success");
+          console.log(data);
+      },
+      error: function(data){
+          console.log("error");
+          console.log(data);
+      }
+  });
+};
 
-//button shows and hides description of picture
+/**
+* Get API Call via Ajax every 24 hours - Using the setInterval
+* @function
+*/
+var getAPI = function() {
+  let apod = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+  let success = $.ajax({
+      url: apod,
+      method: "GET",
+      success: function(result) {
+          addAPIDaily(result);
+      },
+      error: function(result) {
+          console.log("error");
+          console.log(result);
+      }
+  })
+};
 
-// $("#hide").click(function() {
-//   $("p").hide();
-// });
-// $("#show").click(function() {
-//   $("p").show();
-// });
+/**
+* Timer to invoke API call every 24 hours - Invoke addAPIDaily();
+* 1 day = 86,400,000 ms
+*/
+setInterval(function() {
+  var getApiCall = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+  getAPI();
+}, 86400000); // Every 24hrs
+//}, 5000);
+
+
+/**
+* Checkboxes append to the page
+* @function
+* @param
+*/
+var checksTogether = function(subcheckboxCode){
+  var subcheckbox = subcheckboxCode;
+  $('#subject-group').append(subcheckbox);
+};
+
+/**
+* GET cards of all subjects
+* @function
+*/
+var getAllSubjects = function() {
+
+  var queryURL = "/api/subjectsall";
+  
+  let allSubArr;
+  let subcheckbox;
+
+  let success = $.ajax({
+      url: queryURL,
+      method: "GET",
+      success: function(result) {
+          for (var i = 0; i < result.length; i++)  {
+                  allSubArr = result[i].subject;
+                  subcheckbox = "<input type='checkbox' class='subject-Check' id='" + allSubArr + "'> <span class='check-name'>" +
+                  allSubArr + "<span>"
+                  //console.log("subcheckbox " + subcheckbox);
+                  checksTogether(subcheckbox);
+          }
+      },
+      error: function(result) {
+          console.log("error");
+          console.log(result);
+      }
+  });
+};
+
+getAllSubjects();
+
+
+/**
+* NOT COPIED OVER YET
+* Get Subject column Call via Ajax
+* @function
+*/
+
+// TESTING
+//var selectedSubject = "Universe"
+
+//var queryURL = "api/subject/" + selectedSubject;
+
+//console.log("addAPIDailyObj" + addAPIDailyObj)
+
+
+
+// Get route for getting cards of a specific subject - SELECT by subject
+  //app.get("/api/card/subject/:subject", function(req, res) {
+      //db.card.findAll({
+          //where: {
+              //subject: req.params.subject
+          //}
+      //})
+      //.then(function(dbCardSubject) {
+       //   res.json(dbCardSubject);
+      //)};
+

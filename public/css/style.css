@@ -11,6 +11,10 @@
   padding-top: 40px;
 }
 
+.container{
+  margin: 0 auto;
+}
+
 #card {
   background-color: #dadde5;
   border-radius: 10px;
@@ -29,4 +33,36 @@
 .button {
   border-style: solid;
   border-color: white;
+  margin: 0 auto;
 }
+
+#subject-group{
+  margin: 15px auto;
+  /*color: rgb(212, 209, 11);*/
+  color: white;
+  font-size:  16px;
+  text-align: center;
+  font-weight: 700;
+}
+
+[type=checkbox].subject-Check{
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.check-name{
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.w3-bar{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.w3-button{
+  padding: 12px 24px;
+  margin: 0px 10px 0px 10px;}

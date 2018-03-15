@@ -1,33 +1,119 @@
+$(document).ready(function() {
+  let state = {
+    cardArr: [],
+    current: 0,
+    subject: [],
+    currentSubject: -1
+  };
 
-// If helpful ?
-// <p id="demo"></p>
-// var obj = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
-// document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;
+  /**
+   * renders a picture and paragraph onto index.html
+   * @return - appends a picture and paragraph to index.html
+   */
+  const render = () => {
+    let apodPicture = $("<img>");
+    apodPicture.attr("id", "db-picture");
+    console.log("current",  state.current);
+    apodPicture.attr("src", state.cardArr[0][state.current].hdurl);
+    $("#card").html(apodPicture);
+  };
 
+  $("#card").click(function() {
+    if (
+      $("#card")
+        .children()
+        .is("p")
+    ) {
+      let apodPicture = $("<img>");
+      apodPicture.attr("src", state.cardArr[0][state.current].hdurl);
+      apodPicture.attr("id", "db-picture");
+      
+      $("#card").html(apodPicture);
+    } else {
+      let apodExplanation = $("<p>");
 
+      $("#card").html(
+        apodExplanation.text(state.cardArr[0][state.current].explanation)
+      )
+      let userExplanation = $("<p>");
+        $("#card").append(
+          userExplanation.text(state.cardArr[0][state.current].user_desc) 
+      )
+    };
+    
+    $("#card").append(
+      "<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>"
+    );  
+
+  });
+
+  //=====================================================================
+  $.get("api/all", function(data) {
+    state.cardArr = updateArr(state.cardArr, data);
+    console.log(state.cardArr);
+    render();
+  });
+
+  /**
+   * Updates the flashcard array
+   * @param {Array} arr1 - This is an array object
+   * @param {String} data - This is data from the db
+   * @return {[{}]}  - a new array that has all the pushed objects
+   */
+  const updateArr = (arr1, data) => {
+    let newArr = [];
+    arr1.forEach(e => newArr.push({ ...e }));
+    if (!data.isArray) {
+      newArr.push(data);
+    } else {
+      data.forEach(e => newArr.push({ ...e }));
+    }
+    return newArr;
+  };
+
+  /**
+   * resets  empty array
+   * @return {num}  - the num param incremented by one
+   */
+  const resetArr = () => [];
+
+  /**
+   * Removes an element from an object inside an array
+   * @param {Array} arr - This array
+   * @param {string} subject - This any number to be incremented
+   * @return {num}  - the num param incremented by one
+   */
+  const removeSubject = (arr, subject) =>
+    arr.filter(e => e.subject !== subject);
+
+  /**
+   * A simple decrementer
+   * @param {num} num - This any number to be decremented
+   * @return {num}  - the num param decremented by one
+   */
+  const decrement = num => num - 1; //**increment**
+
+  /**
+   * A simple incrementer
+   * @param {num} num - This any number to be incremented
+   * @return {num}  - the num param incremented by one
+   */
+  const increment = num => num + 1;
+
+  /**
+   * Resets the counter
+   * @return - zero
+   */
+  const resetCount = () => 0;
 
 /**
- * COPIED OVER TO app.js
- * 
  * Get the current card id
  * TO DO
  */
 //*** This needs to be the id coming from the current card
-var currentCardID = 1;
-
-
-/**
- * There actually needs to to be another table for 
- * user_desc so it saves as a thread of comments
- * not just one.
- * We are just adding this on to the end of the last comment
- */
-
-
+var currentCardID = 1; 
 
 /**
- * COPIED OVER TO app.js
- * 
  * Event listener on button #add-comment-btn
  * When #add-comment-btn is clicked
  * Get content entered from #user-comment input
@@ -35,19 +121,27 @@ var currentCardID = 1;
  * content from input field
  */
 $("#add-comment-btn").on( "click", function(event) {
-    event.preventDefault();
-    // get value from #user-comment 
-    var userComment = $("#user-comment").val().trim();
-    if(userComment !== "") {
-        // Invoke function
-        addUserComment(userComment);
-    }
+  event.preventDefault();
+
+  // Get value from #user-comment 
+  var userComment = $("#user-comment").val().trim();
+  if(userComment !== "") {
+      // Invoke function
+      addUserComment(userComment);
+  }
 });
 
+  $("#nextbtn").on("click", function() {
+    state.current = increment(state.current);
+    render();
+  });
+
+  $("#backbtn").on("click", function() {
+    state.current = decrement(state.current);
+    render();
+  });
 
 /**
- * COPIED OVER TO app.js
- * 
  * @function 
  * @param {string} userComment - comment user enter
  * Send user comment
@@ -81,15 +175,9 @@ var addUserComment = function (comment) {
         }
     });
 };
-
-
-/********************************************************/
-/* WORKING ON */
-
-
+});
 
 /**
-* WORKING ON
 * Add API Call to database
 * @function
 * Get API Info every 24 hours
@@ -97,8 +185,6 @@ var addUserComment = function (comment) {
 * Send via Ajax
 */
 var addAPIDaily = function (theResult) {  
-
-    var JsonToObj;
 
     // Set to empty string incase any are missing
     var copyright = "";
@@ -134,8 +220,6 @@ var addAPIDaily = function (theResult) {
         });
     }); 
 
-    //console.log("addAPIDailyObj" + addAPIDailyObj)
-
     var queryURL = "/api/insert-card";
 
     $.ajax({
@@ -153,16 +237,12 @@ var addAPIDaily = function (theResult) {
     });
 };
 
-
 /**
-* Get API Call via Ajax
+* Get API Call via Ajax every 24 hours - Using the setInterval
 * @function
-* Get API Info every 24 hours
 */
 var getAPI = function() {
-
     let apod = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
-
     let success = $.ajax({
         url: apod,
         method: "GET",
@@ -176,19 +256,82 @@ var getAPI = function() {
     })
 };
 
-
 /**
-* NOT COPIED OVER YET
-* Timer to invoke API call every 24 hours
-* Then Invoke addAPIDaily(); function
-* to save API
+* Timer to invoke API call every 24 hours - Invoke addAPIDaily();
 * 1 day = 86,400,000 ms
 */
 setInterval(function() {
     var getApiCall = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
-    
     getAPI();
-
 }, 86400000); // Every 24hrs
-
 //}, 5000);
+
+
+/**
+* Checkboxes append to the page
+* @function
+* @param
+*/
+var checksTogether = function(subcheckboxCode){
+    var subcheckbox = subcheckboxCode;
+    $('#subject-group').append(subcheckbox);
+};
+
+/**
+* GET cards of all subjects
+* @function
+*/
+var getAllSubjects = function() {
+
+    var queryURL = "/api/subjectsall";
+    
+    let allSubArr;
+    let subcheckbox;
+
+    let success = $.ajax({
+        url: queryURL,
+        method: "GET",
+        success: function(result) {
+            for (var i = 0; i < result.length; i++)  {
+                    allSubArr = result[i].subject;
+                    subcheckbox = "<input type='checkbox' class='subject-Check' id='" + allSubArr + "'> <span class='check-name'>" +
+                    allSubArr + "<span>"
+                    //console.log("subcheckbox " + subcheckbox);
+                    checksTogether(subcheckbox);
+            }
+        },
+        error: function(result) {
+            console.log("error");
+            console.log(result);
+        }
+    });
+};
+
+getAllSubjects();
+
+
+/**
+* NOT COPIED OVER YET
+* Get Subject column Call via Ajax
+* @function
+*/
+
+// TESTING
+//var selectedSubject = "Universe"
+
+//var queryURL = "api/subject/" + selectedSubject;
+
+//console.log("addAPIDailyObj" + addAPIDailyObj)
+
+
+
+// Get route for getting cards of a specific subject - SELECT by subject
+    //app.get("/api/card/subject/:subject", function(req, res) {
+        //db.card.findAll({
+            //where: {
+                //subject: req.params.subject
+            //}
+        //})
+        //.then(function(dbCardSubject) {
+         //   res.json(dbCardSubject);
+        //)};

@@ -36,10 +36,30 @@ module.exports = function(app) {
         });
     });
 
+// We need to populate the column subject - Automatically
+
+    /**
+    * GET route for getting cards of all subjects - SELECT subject, GROUP BY
+    */
+    app.get("/api/subjectsall", function(req, res) {
+        db.card.findAll({
+            group: [
+                // will return `name`
+                ['subject'],
+                // will return `username` DESC
+                ['subject', 'DESC']
+            ]
+
+        })
+        .then(function(dbSubjects) {
+            res.json(dbSubjects);
+        });
+    });
+
 
 // We need to populate the column subject
     // Get route for getting cards of a specific subject - SELECT by subject
-    app.get("/api/card/subject/:subject", function(req, res) {
+    app.get("/api/subjects/:subject", function(req, res) {
         db.card.findAll({
             where: {
                 subject: req.params.subject
@@ -80,7 +100,9 @@ module.exports = function(app) {
     });
 
 
-    // POST route for saving a new card
+    /**
+    * POST route for saving a new card from API every 24 Hours - INSERT
+    */
     app.post("/api/insert-card", function(req, res) {
         db.card.create(req.body).then(function(dbAddCard) {
             res.json(dbAddCard);
