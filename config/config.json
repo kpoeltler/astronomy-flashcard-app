@@ -4,24 +4,21 @@
       "password": "ulk5gektdu10a597",
       "database": "sj26nkgykstxftf8",
       "host": "p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-      "dialect": "mysql",
-      "port": 	8089
+      "dialect": "mysql"
     },
     "test": {
       "username": "root",
       "password": "root",
       "database": "database_test",
       "host": "127.0.0.1",
-      "dialect": "mysql",
-      "port": 	8089
+      "dialect": "mysql"
     },
     "production": {
       "username": "root",
       "password": "root",
       "database": "database_production",
       "host": "127.0.0.1",
-      "dialect": "mysql",
-      "port": 	8089
+      "dialect": "mysql"
     }
   }
   
