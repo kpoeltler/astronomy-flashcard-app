@@ -130,7 +130,6 @@ var currentCardID = 1;
  */
 $("#add-comment-btn").on( "click", function(event) {
   event.preventDefault();
-
   // get value from #user-comment 
   var userComment = $("#user-comment").val().trim();
   if(userComment !== "") {
