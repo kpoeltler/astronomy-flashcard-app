@@ -28,8 +28,8 @@ height:640;
 }
 
 #db-picture{
-  width: 1000px;
-  height: 620px
+  width: 640px;
+  height: 540px
 }
 
 
@@ -49,6 +49,7 @@ height:640;
 }
 
 [type=checkbox].subject-Check{
+  color: white;
   width: 15px;
   height: 15px;
   margin-left: 5px;
