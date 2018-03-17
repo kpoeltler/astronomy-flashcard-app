@@ -1,7 +1,7 @@
 
 /* Background image on custom wrapper - More Flexibility */
 #wrapper {
-  background-image: url(../images/moon-bg.jpg);
+  background-image: url(../images/milky-way-1031138_1920.jpg);
   background-repeat: no-repeat;
 /* Another tag for cover - have to look it up */
   min-height: 1000px;
@@ -16,17 +16,19 @@
 }
 
 #card {
-  background-color: #dadde5;
+  background-color: #030c25;
   border-radius: 10px;
   box-sizing: border-box;
-  width: 620px;
-  min-height: 335px;
+  width: 1920px;
+  height: 1276px;
   padding: 10px;
   margin: 0 auto;
 }
 
 #db-picture{
-  width: 600px;
+  width: 1920px;
+  height:1276px;
+
 }
 
 
