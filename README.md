@@ -5,24 +5,24 @@ This is an application that serves one purpose. To share, with users, a subject 
 
 **Code Style**
 
-JSdoc style commenting.
+- JSdoc style commenting.
 
 
 **Built With**
 
--Bootstrap V3 - CSS framework
+- Bootstrap V3 - CSS framework
 
--NASA's APOD Api 
+- NASA's APOD Api 
 
--jQuery
+- jQuery
 
--MySQL
+- MySQL
 
--JavaScript
+- JavaScript
 
 **Deployment**
 
--Heroku
+- Heroku
 
 **Future Plans**
 
@@ -30,20 +30,20 @@ JSdoc style commenting.
 
 **Authors**
 
--Susan Bryant,
+- Susan Bryant,
 
--Katie Poeltler,
+- Katie Poeltler,
 
--and special thanks to Cj Jordan
+- and special thanks to Cj Jordan
 
 **License**
 
--This project is licensed under the MIT License - see the LICENSE.md file for details
+- This project is licensed under the MIT License - see the LICENSE.md file for details
 
 **Acknowledgments**
 
--Stanford's CS193X Homework 3 assignment, that inspired us to build flashcards. 
+- Stanford's CS193X Homework 3 assignment, that inspired us to build flashcards. 
 
--Inspiration shout out to NASA
+- Inspiration shout out to NASA
 
 
