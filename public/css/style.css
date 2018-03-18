@@ -1,7 +1,7 @@
 
 /* Background image on custom wrapper - More Flexibility */
 #wrapper {
-  background-color: rgb(31, 30, 30);
+  background-color: #20232a;
   /* background-image: url(../images/milky-way.jpg);
   background-repeat: no-repeat; */
 width:360;
@@ -17,13 +17,30 @@ height:640;
   margin: 0 auto;
 }
 
+header {
+  
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  background-color: #20232a;
+  color: #ffffff;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  left: 0;
+  
+
+}
 #card {
-  background-color: #020714;
+  
+  background-color: #282c34;
   border-radius: 10px;
   box-sizing: border-box;
   width: 1000px;
   min-height: 660px;
-  padding: 10px;
+  padding: 40px;
   margin: 0 auto;
 }
 
