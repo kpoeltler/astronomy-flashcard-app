@@ -6,8 +6,17 @@ $(document).ready(function() {
     currentSubject: -1
   };
 
+  $(document).ready(function(){
+    $("#logo-fade").animate({opacity: '1', display: 'block'}, 3000);
+    $("#logo-fade").animate({opacity: '0', display: 'none', position: 'relative'}, 3000, 
+        function () {
+          $(this).css('z-index', -10)
+        }
+    );
+  });
+
   /**
-   * renders a picture and paragraph onto index.html
+   * Renders a picture and paragraph onto index.html
    * @return - appends a picture and paragraph to index.html
    */
   const render = () => {
@@ -18,30 +27,30 @@ $(document).ready(function() {
     $("#card").html(apodPicture);
   };
   $("#card").click(function() {
-    if (
-      $("#card")
-        .children()
-        .is("p")
-    ) {
-      let apodPicture = $("<img>");
-      apodPicture.attr("src", state.cardArr[0][state.current].hdurl);
-      apodPicture.attr("id", "db-picture");
-      
-      $("#card").html(apodPicture);
+      if (
+        $("#card")
+          .children()
+          .is("p")
+        ) 
+    {
+        let apodPicture = $("<img>");
+        apodPicture.attr("src", state.cardArr[0][state.current].hdurl);
+        apodPicture.attr("id", "db-picture");
+        $("#card").html(apodPicture);
+
     } else {
-      let apodExplanation = $("<p>");
-      $("#card").html(
-        apodExplanation.text(state.cardArr[0][state.current].explanation)
-      )
-      let userExplanation = $("<p>");
+        let apodExplanation = $("<p>");
+        $("#card").html(
+            apodExplanation.text(state.cardArr[0][state.current].explanation)
+        )
+        let userExplanation = $("<p>");
         $("#card").append(
-          userExplanation.text(state.cardArr[0][state.current].user_desc) 
-      )
+            userExplanation.text(state.cardArr[0][state.current].user_desc) 
+        )
+        $("#card").append(
+            "<button id='edit-btn' data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>"
+        );  
     }
-    
-      $("#card").append(
-        "<button data-toggle='modal' data-target='#myModal'> <i class='material-icons'>&#xe254;</i> </button>"
-      );   
     
   });
 
@@ -85,15 +94,15 @@ $(document).ready(function() {
     arr.filter(e => e.subject !== subject);
 
   /**
-   * A simple decrementer
-   * @param {num} num - This any number to be decremented
+   * Decrementer Number
+   * @param {num} num - Any number to be decremented
    * @return {num}  - the num param decremented by one
    */
-  const decrement = num => num - 1; //**increment**
+  const decrement = num => num - 1;
 
   /**
-   * A simple incrementer
-   * @param {num} num - This any number to be incremented
+   * Incrementer Number
+   * @param {num} num - Any number to be incremented
    * @return {num}  - the num param incremented by one
    */
   const increment = num => num + 1;
@@ -104,6 +113,11 @@ $(document).ready(function() {
    */
   const resetCount = () => 0;
 
+
+  /** 
+   * Event Listens on specific Buttons
+   * Next and Previous
+  */
   $("#nextbtn").on("click", function() {
     state.current = increment(state.current);
     render();
@@ -113,6 +127,7 @@ $(document).ready(function() {
     state.current = decrement(state.current);
     render();
   });
+
 
 /**
  * Get the current card id

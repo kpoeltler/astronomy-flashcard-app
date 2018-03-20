@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
   <title>Astronomy Flashcards</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="width=480">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ 
   <link rel="stylesheet" href="css/style.css" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">defer</script>
@@ -21,31 +19,28 @@
   <script src="js/main.js" defer></script>
 
 </head>
-
 <body>
 
   <div id="wrapper">
-    <div class="container-fluid">
       <header>
-        <div id="subject-group"> Choose subject decks to view </div>
-        <div class="w3-bar">
-            <button id="prebtn" class="w3-button w3-black button">Prev</button>
-            <button id="nextbtn" class="w3-button w3-black button">Next</button>
-          </div>
+        <img src="images/logo.png" alt="Logo">
       </header>
-    </div>
+    <div class="container-fluid">
       <div class="container">
 
-        <div id="card" class="flashcard">
-          
-        </div>
+        <!-- Fade in and out Logo -->
+        <h1 id="logo-fade">
+          <img src="images/logo.png" alt="Logo">
+        </h1>
+
+        <div id="card" class="flashcard"></div>
 
         <div class="modal fade" id="myModal">
           <div class="modal-dialog">
             <div class="modal-content">
 
               <div class="modal-header">
-                <h4 id="edit-section" class="modal-title">Drop some knowledge!</h4>
+                <h4 id="edit-section" class="modal-title">Please add your edits</h4>
               </div>
 
               <div class="modal-body">
@@ -53,6 +48,7 @@
                   <input id="user-comment" class="form-control form-control-lg" type="text" placeholder="">
                   <button id="add-comment-btn" type="button" class="btn btn-outline-dark">Submit</button>
                 </form>
+                <p> Feel free to add a link to your university department's website</p>
               </div>
 
               <div class="modal-footer">
@@ -62,13 +58,27 @@
             </div>
           </div>
         </div>
-      <!--// container -->
-    </div>
-    <!--// container-fluid -->
 
+        <div id="content-nav">
+
+            <div id="subject-group"><!-- Check Boxes append here --></div>
+
+            <div id="btn-group">
+                <button id="prebtn" class="button">Prev</button>
+                <button id="nextbtn" class="button">Next</button>
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="copyright">
+        Copyright &copy; <script>document.write(new Date().getFullYear());</script> by Susan R Bryant, Kathie Poeltler
+      </div>
+    </footer>
   </div>
-  <!-- // #wrapper -->
 
 </body>
-
 </html>
