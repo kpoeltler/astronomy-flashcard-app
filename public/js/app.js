@@ -120,6 +120,8 @@ $(document).ready(function() {
   */
   $("#nextbtn").on("click", function() {
       console.log("cardlength", state);
+      console.log("cardlength", state.cardArr[0].length -1);
+      console.log("cardlength",state.current != state.cardArr[0].length -1;
     if(state.current != state.cardArr[0].length -1){
     state.current = increment(state.current);
     }
