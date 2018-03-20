@@ -209,6 +209,8 @@ footer .copyright{
 }
 
 .button {
+    background-color: transparent;
+    
     margin: 0 auto;
     margin: 0px 10px 0px 10px;
 }
