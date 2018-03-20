@@ -120,7 +120,7 @@ $(document).ready(function() {
   */
   $("#nextbtn").on("click", function() {
       console.log("cardlength", state);
-    if(state.current != state.cardArr.length -1){
+    if(state.current != state.cardArr[0].length -1){
     state.current = increment(state.current);
     }
     render();
