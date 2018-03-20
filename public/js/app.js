@@ -133,9 +133,6 @@ $(document).ready(function() {
     render();
   });
 
-
-var currentCardID = 1; 
-
 /**
  * Event listener on button #add-comment-btn
  * When #add-comment-btn is clicked
@@ -146,11 +143,12 @@ var currentCardID = 1;
 $("#add-comment-btn").on( "click", function(event) {
   event.preventDefault();
   // get value from #user-comment 
-  var userComment = $("#user-comment").val().trim();
-  if(userComment !== "") {
-      // Invoke function
-      addUserComment(userComment);
-  }
+  var userCommentObj = {
+    id: state.cardArr[0][state.current].id,
+    user_desc: $("#user-comment").val().trim()
+}
+
+    addUserComment(userCommentObj);
 });
 
 /**
@@ -164,19 +162,14 @@ $("#add-comment-btn").on( "click", function(event) {
  */
 var addUserComment = function (comment) {  
 
-  // Constructing a card object to hand to the database
-  // column user_desc to be added
-  var userCommentObj = {
-      id: currentCardID,
-      user_desc: comment,
-  };
 
-  var queryURL = "api/description/" + currentCardID;
+
+  var queryURL = "api/description/" + comment.id;
 
   $.ajax({
       type: 'PUT',
       url: queryURL,
-      data: userCommentObj,
+      data: comment,
       success: function(data){
           console.log("success");
           console.log(data);
