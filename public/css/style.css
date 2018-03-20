@@ -190,10 +190,10 @@ footer .copyright{
     font-weight: 400;
 }
 
-#btn-group{
+/* #btn-group{
     margin: 15px auto;
     text-align: center;
-}
+} */
 
 [type=checkbox].subject-Check{
     width: 15px;
@@ -209,7 +209,7 @@ footer .copyright{
     margin-right: 10px;
 }
 
-.button {
+.btns button {
     background-color: transparent;
     border-color: #20232a;
     height:30px;
