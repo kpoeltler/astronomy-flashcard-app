@@ -127,7 +127,7 @@ header > img {
     height: 475px;
 }
 
-footer {
+/* footer {
     background-color: #20232a;
     text-align:left;
     bottom: 0;
@@ -141,7 +141,7 @@ footer .copyright{
     font-size: 10px;
     margin-bottom: 0px;
     padding: 1px 1px 1px 1px;
-}
+} */
 
 /* Modal - Popup */
 .material-icons{
@@ -210,6 +210,7 @@ footer .copyright{
 
 .button {
     background-color: #282c34;
+    
     /* border-width: 1px; 
     border-style: solid;
     border-color: #FFFFFF;   */
