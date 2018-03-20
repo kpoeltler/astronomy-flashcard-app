@@ -210,10 +210,8 @@ footer .copyright{
 
 .button {
     background-color: transparent;
-    
-    border-width: 1px; 
-    border-style: solid;
-    border-color: #282c34;   
+    height: 10px;
+    width: 15px;  
     margin: 0 auto;
     margin: 0px 10px 0px 10px;
 }
