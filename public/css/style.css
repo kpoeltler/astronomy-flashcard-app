@@ -210,7 +210,8 @@ footer .copyright{
 }
 
 .btns{
-    color:white;
+    color: white;
+    background-color: #20232a;
     height:30px;
     width:40px;
     margin: 0 auto;
