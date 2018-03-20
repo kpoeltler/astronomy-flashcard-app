@@ -119,6 +119,7 @@ $(document).ready(function() {
    * Next and Previous
   */
   $("#nextbtn").on("click", function() {
+      console.log("cardlength", state);
     if(state.current != state.cardArr.length -1){
     state.current = increment(state.current);
     }
@@ -126,6 +127,7 @@ $(document).ready(function() {
   });
 
   $("#backbtn").on("click", function() {
+    console.log("cardlength", state);
     if(state.current != 0){
     state.current = decrement(state.current);
     }
