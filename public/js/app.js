@@ -119,21 +119,20 @@ $(document).ready(function() {
    * Next and Previous
   */
   $("#nextbtn").on("click", function() {
+    if(state.current != state.cardArr.length -1){
     state.current = increment(state.current);
+    }
     render();
   });
 
   $("#backbtn").on("click", function() {
+    if(state.current != 0){
     state.current = decrement(state.current);
+    }
     render();
   });
 
 
-/**
- * Get the current card id
- * TO DO
- */
-//*** This needs to be the id coming from the current card
 var currentCardID = 1; 
 
 /**
