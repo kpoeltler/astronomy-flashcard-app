@@ -209,9 +209,8 @@ footer .copyright{
     margin-right: 10px;
 }
 
-.btns button {
-    background-color: transparent;
-    border-color: #20232a;
+.btns{
+    color:white;
     height:30px;
     width:40px;
     margin: 0 auto;
