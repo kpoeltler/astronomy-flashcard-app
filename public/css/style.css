@@ -64,7 +64,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;*/ 
-    background-color: #2d2d2d;
+    background-color: #282c34;
 }
 
 /* WRAPPERS */
@@ -80,14 +80,14 @@ body {
 }
 
 header {
-    background-color: #000000;
-    padding: 15px 20px 10px 20px;
-    text-align:  right;
-    margin-bottom: 15px;
+    background-color: #20232a;
+    padding: 1px;
+    text-align:left;
+    margin-bottom: 2px;
 }
 
 header > img {
-    height: 60px;
+    height: 20px;
 }
 
 .container{
@@ -112,9 +112,9 @@ header > img {
 
 /* Flash Card */
 #card {
-    background-color: #444444;
+    background-color: #282c34;
     overflow: hidden;
-    border: 4px solid #000000;
+    border: 4px solid #20232a;
     width:720px;
     margin: 0 auto;
 }
@@ -128,19 +128,19 @@ header > img {
 }
 
 footer {
-    background-color: #000000;
-    text-align:  right;
+    background-color: #20232a;
+    text-align:left;
     bottom: 0;
     width: 100%;
     position: fixed;
 }
 
 footer .copyright{
-    background-color: #000000;
+    background-color: #20232a;
     text-align:  right;
-    font-size: 8px;
+    font-size: 10px;
     margin-bottom: 0px;
-    padding: 2px 2px 2px 2px;
+    padding: 1px 1px 1px 1px;
 }
 
 /* Modal - Popup */
@@ -172,13 +172,13 @@ footer .copyright{
 
 /* Controls */
 #content-nav{
-    background-color: #000000;
+    background-color: #20232a;
     text-align: center;
     margin: 0 auto;
     color: #ffffff;
     padding: 0px;
     margin-bottom: 80px;
-    border: 4px solid #000000;
+    border: 4px solid #20232a;
     width:720px;
 }
 
@@ -210,8 +210,8 @@ footer .copyright{
 
 .button {
     background-color: #000;
-    border-width: 1px;
-    border-style: solid;
+    /* border-width: 1px; */
+    /* border-style: solid; */
     border-color: #FFFFFF;
     margin: 0 auto;
     margin: 0px 10px 0px 10px;
