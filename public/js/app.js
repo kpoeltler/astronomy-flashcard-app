@@ -128,7 +128,7 @@ $(document).ready(function() {
     render();
   });
 
-  $("#backbtn").on("click", function() {
+  $("#prebtn").on("click", function() {
     console.log("cardlength", state);
     if(state.current != 0){
     state.current = decrement(state.current);
