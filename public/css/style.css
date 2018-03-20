@@ -211,12 +211,12 @@ footer .copyright{
 .button {
     background-color: transparent;
     border-color: #20232a;
-    height:60px;
-    width:60px;
+    height:30px;
+    width:40px;
     margin: 0 auto;
     margin: 0px 10px 0px 10px;
 }
 
-.button:hover {
+/* .button:hover {
     background-color: #666666;
-} 
+}  */
