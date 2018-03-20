@@ -209,7 +209,7 @@ footer .copyright{
     margin-right: 10px;
 }
 
-.btns{
+.btns #prebtn #nextbtn{
     color: white;
     background-color: #20232a;
     height:30px;
