@@ -39,10 +39,10 @@ html {
 	height: 100%;
 	width: 100%;
 	overflow-y: scroll;
-	-ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: transparent;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -57,13 +57,14 @@ body {
 	font-size: 1.1em;
 	line-height: 1.4em;	
 	font-weight: normal;
-  color: #ffffff;
-  text-align: left;
-  background: url(../images/bg-space.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    color: #ffffff;
+    text-align: left;
+/*   background: url(../images/bg-space.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/ 
+    background-color: #2d2d2d;
 }
 
 /* WRAPPERS */
@@ -79,13 +80,13 @@ body {
 
 header {
     background-color: #000000;
-    padding: 20px 20px 0px 20px;
+    padding: 15px 20px 10px 20px;
     text-align:  right;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 header > img {
-    height: 75px;
+    height: 60px;
 }
 
 .container{
@@ -121,13 +122,12 @@ header > img {
     width: 100%;
     margin: 0 auto;
     object-fit: cover;
-    height: 550px;
+    height: 475px;
 }
 
 footer {
     background-color: #000000;
     text-align:  right;
-    margin-top: 50px;
     bottom: 0;
     width: 100%;
     position: fixed;
@@ -174,8 +174,8 @@ footer .copyright{
     text-align: center;
     margin: 0 auto;
     color: #ffffff;
-    padding: 10px;
-    margin-bottom: 150px;
+    padding: 0px;
+    margin-bottom: 80px;
     border: 4px solid #000000;
 }
 
@@ -188,7 +188,6 @@ footer .copyright{
 
 #btn-group{
     margin: 15px auto;
-    /*color: rgb(212, 209, 11);*/
     text-align: center;
 }
 
