@@ -127,22 +127,6 @@ header > img {
     height: 475px;
 }
 
-/* footer {
-    background-color: #20232a;
-    text-align:left;
-    bottom: 0;
-    width: 100%;
-    position: fixed;
-}
-
-footer .copyright{
-    background-color: #20232a;
-    text-align:  right;
-    font-size: 10px;
-    margin-bottom: 0px;
-    padding: 1px 1px 1px 1px;
-} */
-
 /* Modal - Popup */
 .material-icons{
     color: #666666;
