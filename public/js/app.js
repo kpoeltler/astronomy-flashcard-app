@@ -302,43 +302,54 @@ var getAllSubjects = function() {
                   allSubArr = result[i].subject;
                   subcheckbox = "<input type='checkbox' class='subject-Check' id='" + allSubArr + "'> <span class='check-name'>" +
                   allSubArr + "<span>"
-                  //console.log("subcheckbox " + subcheckbox);
                   checksTogether(subcheckbox);
           }
       },
       error: function(result) {
-          console.log("error");
-          console.log(result);
       }
   });
 };
 
 getAllSubjects();
 
+var url = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
 
-/**
-* NOT COPIED OVER YET
-* Get Subject column Call via Ajax
-* @function
-*/
+$.ajax({
+  url: url,
+  success: function(result){
+  if("copyright" in result) {
+    $("#copyright").text("Image Credits: " + result.copyright);
+  }
+  else {
+    $("#copyright").text("Image Credits: " + "Public Domain");
+  }
 
-// TESTING
-//var selectedSubject = "Universe"
+  if(result.media_type == "video") {
+    $("#apod_img_id").css("display", "none");
+    $("#apod_vid_id").attr("src", result.url);
+  }
+  else {
+    $("#apod_vid_id").css("display", "none");
+    $("#apod_img_id").attr("src", result.url);
+  }
+  $("#reqObject").text(url);
+  $("#returnObject").text(JSON.stringify(result, null, 4));
+  $("#apod_explaination").text(result.explanation);
+  $("#apod_title").text(result.title);
+}
+});
 
-//var queryURL = "api/subject/" + selectedSubject;
+let apod = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
 
-//console.log("addAPIDailyObj" + addAPIDailyObj)
-
-
-
-// Get route for getting cards of a specific subject - SELECT by subject
-  //app.get("/api/card/subject/:subject", function(req, res) {
-      //db.card.findAll({
-          //where: {
-              //subject: req.params.subject
-          //}
-      //})
-      //.then(function(dbCardSubject) {
-       //   res.json(dbCardSubject);
-      //)};
-
+let success = $.ajax({
+  url: apod,
+  method: "GET",
+  success: function(result){
+  if("copyright" in result) {
+    $("#copyright").text("Image Credits: " + result.copyright);
+  }
+  else {
+    $("#copyright").text("Image Credits: " + "Public Domain");
+  }
+}
+})
