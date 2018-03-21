@@ -190,10 +190,10 @@ footer .copyright{
     font-weight: 400;
 }
 
-/* #btn-group{
+#btn-group{
     margin: 15px auto;
     text-align: center;
-} */
+}
 
 [type=checkbox].subject-Check{
     width: 15px;
