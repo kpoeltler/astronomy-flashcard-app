@@ -52,32 +52,44 @@ module.exports = function(app) {
       });
   });
 
-  app.put("/api/description/:id", function(req, res) {
-    db.card
-      .update(req.body, {
-        where: {
-          id: req.body.id
-        }
-      })
-      .then(function(dbUpdateComment) {
-        res.json(dbUpdateComment);
-      })
-      .catch(function(err) {
-        res.json(err);
-      });
-  });
+  // app.put("/api/description/:id", function(req, res) {
+  //   db.Card.create({
+  //     (req.body, {
+  //       where: {
+  //         id: req.body.id
+  //       }
+  //     })
+  //     .then(function(dbUpdateComment) {
+  //       res.json(dbUpdateComment);
+  //     })
+      
+  // });
 
-  /**
-   * POST route for saving a new card from API every 24 Hours - INSERT
-   */
-  app.post("/api/insert-card", function(req, res) {
-    db.card
-      .create(req.body)
-      .then(function(dbAddCard) {
-        res.json(dbAddCard);
-      })
-      .then(function(dbAddCard) {
-        res.json(dbAddCard);
-      });
-  });
-};
+  //I added these post routes to see if the user stuff word save to'
+//to the database ============================
+  app.post("/api/update", function(req, res) {
+    db.Card.create({
+      user_desc: req.body.user_desc,
+    }
+  )
+      
+  app.post("/api/user-edit", function(req, res) {
+    db.Card.update({
+      user_desc: req.body.user_desc,
+    },{
+    where: {
+      user_desc: req.body.user_desc,
+    }
+  })
+    
+      
+      
+
+
+
+
+
+
+
+
+
