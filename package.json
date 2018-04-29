@@ -1,7 +1,7 @@
 {
   "name": "astronomy-flashcard-app",
   "version": "1.0.0",
-  "description": "flashcards",
+  "description": "Application that shares pictures of the Universe",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,30 +11,31 @@
     "type": "git",
     "url": "git+https://github.com/kpoeltler/astronomy-flashcard-app.git"
   },
-  "keywords": [
-    "astronomy",
-    "javascript",
-    "nasa"
-  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kpoeltler/astronomy-flashcard-app/issues"
   },
-  "homepage": "https://github.com/kpoeltler/astronomy-flashcard-app#readme",
+  "homepage": "https://github.com/kmatchu/astronomy-flashcard-app/#readme",
   "dependencies": {
+    "animejs": "^2.2.0",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
-    "chai-param": "^0.1.2",
-    "chai-shallow-deep-equal": "^1.4.6",
     "express": "^4.16.2",
     "fs": "0.0.1-security",
-    "jasmine": "^3.1.0",
+    "mocha": "^5.0.2",
     "mysql2": "^1.5.2",
+    "node-localstorage": "^1.3.0",
     "npm": "^5.7.1",
     "path": "^0.12.7",
-    "popper.js": "^1.12.9",
     "sequelize": "^4.35.2",
-    "tooltip.js": "^1.1.7"
+    "store": "^2.0.12"
   }
 }
+
+
+
+
+
+
+
