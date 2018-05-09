@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -19,54 +19,181 @@
 
 </head>
 
-<body>
-  <div id="wrapper">
-    <header>
-      <img src="images/logo.png" alt="Logo">
-    </header>
-    <div class="container-fluid">
-      <div class="container">
+<body> -->
+  <!DOCTYPE html>
+    <html>
 
-        <!-- Fade in and out Logo -->
-        <h1 id="logo-fade">
-          <img src="images/logo.png" alt="Logo">
-        </h1>
+            <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                  
+                    <title>Picture of The Day Flashcards</title>
+        
 
-        <div id="card" class="flashcard"></div>
 
-        <div class="modal fade" id="myModal">
-          <div class="modal-dialog">
-            <div class="modal-content">
+        <link href="https://fonts.googleapis.com/css?family=Nunito|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="flashcard-style.css" />
+        <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
 
-              <div class="modal-header">
-                <h4 id="edit-section" class="modal-title">Please add your deep space knowledge</h4>
-              </div>
+        <script src="https://code.jquery.com/pep/0.4.1/pep.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+        <script src="constants.js" defer></script>
+        <script src="flashcard.js" defer></script>
+        <script src="flashcard-screen.js" defer></script>
+        <script src="menu-screen.js" defer></script>
+        <script src="results-screen.js" defer></script>
+        <script src="app.js" defer></script>
+        <script src="main.js" defer></script>
 
-              <div class="modal-body">
-                <form action="" method="post">
-                  <input id="user-comment" class="form-control form-control-lg" type="text" placeholder="">
-                  <button id="add-comment-btn" type="button" class="btn btn-outline-dark">Submit</button>
-                </form>
-                <p> </p>
-              </div>
+        
+    </head>
 
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+    <body>
+            <pre id="reqObject"></pre>
 
-            </div>
-          </div>
-        </div>
 
-        <div id="content-nav">
-          <!-- <div id="subject-group"> -->
-            <button class="btns" id="prebtn"><</button>
-            <button class="btns" id="nextbtn">></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <img id="apod_img_id" width="250px" />
+    
+            <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="3"></iframe>
+            <p id="copyright"></p>
+    
+            <h3 id="apod_title"></h3>
+            <p id="apod_explaination"></p>
+            <br/>
+            <b>Return Object:</b>
+            <pre id="returnObject"></pre>
+    
+    
+    
+    
+    
+    
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+ 
+    <script>
+            var url = "https://api.nasa.gov/planetary/apod?api_key=VBmmkpWMV3eWpklLC1tsXUmUiiej1unTpiihHq8n";
+            $.ajax({
+              url: url,
+              success: function(result){
+              if("copyright" in result) {
+                $("#copyright").text("Image Credits: " + result.copyright);
+              }
+              else {
+                $("#copyright").text("Image Credits: " + "Public Domain");
+              }
+              
+              if(result.media_type == "video") {
+                $("#apod_img_id").css("display", "none"); 
+                $("#apod_vid_id").attr("src", result.url);
+              }
+              else {
+                $("#apod_vid_id").css("display", "none"); 
+                $("#apod_img_id").attr("src", result.url);
+              }
+              $("#reqObject").text(url);
+              $("#returnObject").text(JSON.stringify(result, null, 4));  
+              $("#apod_explaination").text(result.explanation);
+              $("#apod_title").text(result.title);
+            }
+            });   
+    
+    </script>
+               
+    </body>
 
-</body>
-</html>
+    </html>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // <div id="wrapper">
+  //   <header>
+  //     <img src="images/logo.png" alt="Logo">
+  //   </header>
+  //   <div class="container-fluid">
+  //     <div class="container">
+
+        
+  //       <h1 id="logo-fade">
+  //         <img src="images/logo.png" alt="Logo">
+  //       </h1>
+
+  //       <div id="card" class="flashcard"></div>
+
+  //       <div class="modal fade" id="myModal">
+  //         <div class="modal-dialog">
+  //           <div class="modal-content">
+
+  //             <div class="modal-header">
+  //               <h4 id="edit-section" class="modal-title">Please add your deep space knowledge</h4>
+  //             </div>
+
+  //             <div class="modal-body">
+  //               <form action="" method="post">
+  //                 <input id="user-comment" class="form-control form-control-lg" type="text" placeholder="">
+  //                 <button id="add-comment-btn" type="button" class="btn btn-outline-dark">Submit</button>
+  //               </form>
+  //               <p> </p>
+  //             </div>
+
+  //             <div class="modal-footer">
+  //               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  //             </div>
+
+  //           </div>
+  //         </div>
+  //       </div>
+
+//         <div id="content-nav">
+//           <!-- <div id="subject-group"> -->
+//             <button class="btns" id="prebtn"><</button>
+//             <button class="btns" id="nextbtn">></button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+
+//   <pre id="reqObject"></pre>
+//   +
+//   +
+//   +            <img id="apod_img_id" width="250px" />
+//   +    
+//   +            <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="3"></iframe>
+//   +            <p id="copyright"></p>
+//   +    
+//   +            <h3 id="apod_title"></h3>
+//   +            <p id="apod_explaination"></p>
+//   +            <br/>
+//   +            <b>Return Object:</b>
+//   +            <pre id="returnObject"></pre>
+//   +    
+//   +    
+//   +    
+//   +    
+//   +    
+//   +    
+//   +            
+//   +    
+//   + 
+//   +   
+  
+//   +    
+//   +   
+
+// </body>
+// </html>
